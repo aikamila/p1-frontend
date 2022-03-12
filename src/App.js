@@ -1,24 +1,35 @@
 import logo from './logo.svg';
 import './App.css';
+import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import StartPage from './pages/StartPage';
+import PrivateRoute from './utils/PrivateRoute';
+import PublicRoute from './utils/PublicRoute';
+
+import AuthPage from './pages/AuthPage';
+import HomePage from './pages/HomePage';
+import InitialVerificationPage from './pages/InitialVerificationPage';
+import UnsuccessfulInitialVerificationPage from './pages/UnsuccessfulInitialVerificationPage';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+     <div className="App">
+
+          <PublicRoute path="/" exact>
+            <StartPage/>
+          </PublicRoute>
+          <PublicRoute path="/auth">
+            <AuthPage/>
+          </PublicRoute>
+          <PrivateRoute path="/home"> 
+            <HomePage/>
+          </PrivateRoute>
+            <Switch>
+              <Route path="/verification/unsuccessful" component={UnsuccessfulInitialVerificationPage}/>
+              <Route path="/verification/:id/:token" component={InitialVerificationPage} />
+            </Switch>
+
+     </div>
+
   );
 }
 

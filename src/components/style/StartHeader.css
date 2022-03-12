@@ -1,0 +1,40 @@
+.start-header {
+  color: white;
+  background-color: black;
+  height: 20vh;
+  position: -webkit-sticky;
+  /* for safari */
+  width: 100vw;
+  position: relative;
+}
+
+.start-header__sign-up,
+.start-header__log-in {
+  color: white;
+}
+
+.start-header__navbar {
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  height: 17vh;
+}
+
+@media screen and (max-width: 820px) {
+  .start-header__navbar {
+    justify-content: space-evenly;
+    align-items: flex-end;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .start-header__sign-up {
+    flex: 1 1 auto;
+  }
+  .start-header__log-in {
+    flex: 1 1 auto;
+  }
+  .start-header__division {
+    display: none;
+  }
+}

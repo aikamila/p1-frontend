@@ -1,0 +1,205 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`sign up form is rendered correctly 1`] = `
+<div
+  className="App"
+>
+  <nav
+    aria-label="main navigation"
+  >
+    <a
+      aria-label="Go back to the homepage"
+      href="/"
+      onClick={[Function]}
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 1024 1024"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+        />
+      </svg>
+    </a>
+  </nav>
+  <main>
+    <div
+      className="sign-up-form__window"
+    >
+      <form
+        onSubmit={[Function]}
+      >
+        <div
+          className="sign-up-form__email"
+        >
+          <input
+            aria-label="email"
+            className="sign-up-form__email_input"
+            name="name"
+            onChange={[Function]}
+            placeholder="Email"
+            type="text"
+            value=""
+          />
+          
+        </div>
+        <div
+          className="sign-up-form__username"
+        >
+          <input
+            aria-label="username"
+            className="sign-up-form__username_input"
+            name="username"
+            onChange={[Function]}
+            placeholder="Username"
+            type="text"
+            value=""
+          />
+          <span>
+            Only letters, numbers and . _ -
+          </span>
+        </div>
+        <div
+          className="sign-up-from__name"
+        >
+          <input
+            aria-label="first name"
+            className="sign-up-form__name_input"
+            name="name"
+            onChange={[Function]}
+            placeholder="First name"
+            type="text"
+            value=""
+          />
+          
+        </div>
+        <div
+          className="sign-up-form__lastname"
+        >
+          <input
+            aria-label="last name"
+            className="sign-up-form__lastname_input"
+            name="last name"
+            onChange={[Function]}
+            placeholder="Last name"
+            type="text"
+            value=""
+          />
+          
+        </div>
+        <div
+          className="sign-up-form__password"
+        >
+          <input
+            aria-label="password"
+            className="sign-up-form__password_input"
+            name="password"
+            onChange={[Function]}
+            placeholder="Password"
+            role="textbox"
+            type="password"
+            value=""
+          />
+          
+        </div>
+        <div
+          className="sign-up-form__password_second"
+        >
+          <input
+            aria-label="confirm your password"
+            className="sign-up-form__password_second_input"
+            name="password"
+            onChange={[Function]}
+            placeholder="Confirm your password"
+            role="textbox"
+            type="password"
+            value=""
+          />
+        </div>
+        <div
+          className="sign-up-form__bio"
+        >
+          <textarea
+            aria-label="Add bio (you can do it later)"
+            className="sign-up-form__bio_input"
+            name="bio"
+            onChange={[Function]}
+            placeholder="You can tell a little about yourself if you want"
+            value=""
+          />
+          <span
+            id="signUpBioCount"
+          >
+            Characters left: 150
+          </span>
+          
+        </div>
+        <input
+          type="submit"
+          value="Sign up"
+        />
+      </form>
+      <p>
+        Already have an account? 
+        <a
+          href="/auth"
+          onClick={[Function]}
+        >
+          Log in
+        </a>
+         instead
+      </p>
+    </div>
+  </main>
+</div>
+`;
+
+exports[`sign up success is rendered correctly 1`] = `
+<div
+  className="App"
+>
+  <nav
+    aria-label="main navigation"
+  >
+    <a
+      aria-label="Go back to the homepage"
+      href="/"
+      onClick={[Function]}
+    >
+      <svg
+        fill="currentColor"
+        height="1em"
+        stroke="currentColor"
+        strokeWidth="0"
+        style={
+          Object {
+            "color": undefined,
+          }
+        }
+        viewBox="0 0 1024 1024"
+        width="1em"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+        />
+      </svg>
+    </a>
+  </nav>
+  <div>
+    <p>
+      Go check your email
+    </p>
+  </div>
+</div>
+`;

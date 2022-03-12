@@ -1,0 +1,40 @@
+.user-account__background {
+  background-color: var(--background-gray);
+  flex-direction: column;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 70vh;
+}
+
+.user-account__window {
+  width: 620px;
+  max-width: 90vw;
+}
+
+.user-account__info_section {
+  margin-left: 5px;
+}
+
+.user-account__no_posts {
+  margin-left: 5px;
+  margin-top: 45px;
+}
+
+.user-account__posts_data_failure,
+.user-account__user_data_failure {
+  text-align: center;
+  margin-top: 50px;
+  font-weight: 400;
+  color: gray;
+}
+
+.user-account__user_loading,
+.user-account__posts_loading {
+  font-size: 2em;
+}
+
+.user-account__loading_div{
+  margin: 20% 10%;
+  text-align: center;
+}

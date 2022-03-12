@@ -1,0 +1,109 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`the start page is rendered correctly 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="start-header"
+  >
+    <nav
+      aria-label="main navigation"
+      className="start-header__navbar"
+    >
+      <a
+        className="start-header__sign-up"
+        href="/auth/signup"
+        onClick={[Function]}
+        role="button"
+      >
+        Sign up
+      </a>
+      <span
+        className="start-header__division"
+      >
+           |   
+      </span>
+      <a
+        className="start-header__log-in"
+        href="/auth"
+        onClick={[Function]}
+        role="button"
+      >
+        Log in
+      </a>
+    </nav>
+  </header>
+  <main
+    className="start-page"
+  >
+    <div
+      className="start-page__beginning"
+    >
+      <h1>
+        You always wanted to change the world.
+      </h1>
+      <h2>
+        We made it possible for YOU.
+      </h2>
+      <button
+        onClick={[Function]}
+      >
+        See how it works
+      </button>
+    </div>
+    <div
+      className="start-page__sections"
+    >
+      <div
+        className="animate__animated"
+        style={
+          Object {
+            "animationDuration": "2s",
+            "opacity": 0,
+          }
+        }
+      >
+        <section
+          className="start-page__section1"
+        >
+          <h3>
+            What is this app really about?
+          </h3>
+          <p>
+            We believe that all people are capable of great things. Most of them are too scared or too doubtful to realize their plans. It doesn't matter whether you would like to start a charity organization or maybe set up your own company - we know that we are all sstronger together. We give you an amazing opportunity to put your dreams into action with 
+            <nobr>
+              like-minded
+            </nobr>
+            ,
+            <nobr>
+              goal-oriented
+            </nobr>
+             people.
+          </p>
+        </section>
+      </div>
+      <div
+        className="animate__animated"
+        style={
+          Object {
+            "animationDuration": "2s",
+            "opacity": 0,
+          }
+        }
+      >
+        <section
+          className="start-page__section2"
+        >
+          <h3>
+            How can I start?
+          </h3>
+          <p>
+            Sign up, verify your email and start - it's as simple as that! You can share your ideas publically or take a look at other people's posts - you can either comment or simply look for inspiration. Unleash your potential!
+          </p>
+        </section>
+      </div>
+    </div>
+  </main>
+</div>
+`;

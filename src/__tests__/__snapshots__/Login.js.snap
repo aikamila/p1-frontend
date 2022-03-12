@@ -1,0 +1,108 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`login form is rendered correctly 1`] = `
+<div
+  className="App"
+>
+  <header
+    className="auth-header"
+  >
+    <img
+      alt="shangify brand logo"
+      src="shangify.png"
+    />
+    <nav
+      aria-label="main navigation"
+    >
+      <a
+        aria-label="Go back to the homepage"
+        className="auth-header__homepage_link"
+        href="/"
+        onClick={[Function]}
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 1024 1024"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M563.8 512l262.5-312.9c4.4-5.2.7-13.1-6.1-13.1h-79.8c-4.7 0-9.2 2.1-12.3 5.7L511.6 449.8 295.1 191.7c-3-3.6-7.5-5.7-12.3-5.7H203c-6.8 0-10.5 7.9-6.1 13.1L459.4 512 196.9 824.9A7.95 7.95 0 0 0 203 838h79.8c4.7 0 9.2-2.1 12.3-5.7l216.5-258.1 216.5 258.1c3 3.6 7.5 5.7 12.3 5.7h79.8c6.8 0 10.5-7.9 6.1-13.1L563.8 512z"
+          />
+        </svg>
+      </a>
+    </nav>
+  </header>
+  <main
+    className="log-in-form__background"
+  >
+    <div
+      className="log-in-form__window"
+    >
+      <div
+        className="log-in-form__el cta"
+      >
+        <p>
+          Welcome again!
+          <br />
+          Log in and share your creative ideas with the world!
+        </p>
+      </div>
+      <div
+        className="log-in-form__el email"
+      >
+        <input
+          aria-label="email"
+          className="log-in-form__input"
+          name="email"
+          onChange={[Function]}
+          placeholder="Email"
+          style={Object {}}
+          type="text"
+          value=""
+        />
+      </div>
+      <div
+        className="log-in-form__el password"
+      >
+        <input
+          aria-label="password"
+          className="log-in-form__input"
+          name="password"
+          onChange={[Function]}
+          placeholder="Password"
+          role="textbox"
+          style={Object {}}
+          type="password"
+          value=""
+        />
+      </div>
+      <button
+        className="log-in-form__button"
+        disabled={false}
+        onClick={[Function]}
+      >
+        Log in
+      </button>
+      <p>
+        I wanna 
+        <a
+          className="log-in-form__signup_link"
+          href="/auth/signup"
+          onClick={[Function]}
+        >
+          sign up instead
+        </a>
+      </p>
+    </div>
+  </main>
+</div>
+`;

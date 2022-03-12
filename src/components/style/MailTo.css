@@ -1,0 +1,13 @@
+.mail-to__button {
+  width: 47.5%;
+  padding: 3px;
+  border-color: transparent;
+  border-radius: 3px;
+  background-color: var(--nice-blue);
+  text-align: center;
+}
+
+.mail-to__button > a{
+    text-decoration: none;
+    color: white;
+}

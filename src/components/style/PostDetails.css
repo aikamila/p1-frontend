@@ -1,0 +1,177 @@
+.post-details__background {
+  background-color: var(--background-gray);
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+.post-details__window {
+  --width: 50em;
+}
+
+.post-details__window {
+  background-color: white;
+  border: 1px solid darkgray;
+  margin-top: 3vh;
+  margin-bottom: 4vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: var(--width);
+}
+
+@media screen and (max-width: 820px) {
+  .post-details__window {
+    --width: 90vw;
+  }
+}
+
+.post-details__main {
+  width: 90%;
+  margin-top: 2vh;
+  margin-bottom: 3vh;
+  position: relative;
+}
+
+.post-details__comments_section {
+  margin-left: 5%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.post-details__replies_section {
+  margin-left: 7%;
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
+.post-details__author {
+  text-decoration: none;
+  color: black;
+  font-weight: 500;
+  margin-top: 1em;
+}
+
+.post-details__time {
+  font-size: 0.7em;
+  color: gray;
+}
+
+.post-details__content {
+  text-justify: inter-word;
+  text-align: justify;
+  overflow: hidden;
+}
+
+.post-details__input {
+  flex: 1 1 auto;
+  resize: none;
+  border-color: transparent;
+  font-family: "Raleway", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+    "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
+}
+
+.post-details__input_el {
+  width: 100%;
+  border: 1px solid darkgray;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+}
+
+.post-details__input:focus {
+  outline: none;
+}
+
+.post-details__add_button {
+  flex: 0.001 1 auto;
+  text-align: center;
+  border: transparent;
+  color: var(--nice-blue);
+  background-color: white;
+}
+
+.post-details__add_button:hover {
+  cursor: pointer;
+}
+
+.post-details__delete_button,
+.post-details__delete_dialog > div > button,
+.post-details__delete_dialog > button {
+  margin-left: 5px;
+  margin-right: 5px;
+  background-color: var(--nice-blue);
+  border-radius: 3px;
+  border-color: transparent;
+  color: white;
+}
+
+.post-details__delete_dialog > div > button,
+.post-details__delete_dialog > button {
+  height: 3em;
+  width: 7em;
+}
+
+.post-details__delete_button:hover {
+  cursor: pointer;
+}
+
+.post-details__edit_link {
+  text-decoration: none;
+  color: gray;
+}
+
+.post-details__input_err {
+  font-size: 0.8em;
+  color: red;
+}
+
+.post-details__delete_dialog {
+  position: fixed;
+  top: 10em;
+  width: 40em;
+  max-width: 80vw;
+  height: 20em;
+  border: 1px solid gray;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+.post-details__del_loading_sign {
+  font-size: 2em;
+}
+
+.post-details__init_loading_sign {
+  margin-top: 8vh;
+  font-size: 8em;
+  color: gray;
+}
+
+.post-details__init_err {
+  margin-top: 8vh;
+  font-size: 1.1em;
+  color: gray;
+  font-weight: 500;
+}
+
+.post-details__del_success {
+  margin: 3em 0em 1em 0em;
+  font-size: 1em;
+}
+
+.post-details__del_success_link {
+  margin: 1em;
+  font-size: 1em;
+  color: var(--nice-blue);
+  text-decoration: none;
+}
+
+.post-details__del_success_link:hover {
+  text-decoration: underline;
+}

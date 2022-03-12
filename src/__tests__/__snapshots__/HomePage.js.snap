@@ -1,0 +1,22 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`all elements are rendered 1`] = `
+<div
+  className="App"
+>
+  <header>
+    <nav>
+      <p
+        role="button"
+      >
+        Log out
+      </p>
+    </nav>
+  </header>
+  <main>
+    <p>
+      Wait a sec...
+    </p>
+  </main>
+</div>
+`;

@@ -1,0 +1,70 @@
+.start-page {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100vw;
+  background-image: linear-gradient(
+    rgb(248, 217, 230),
+    rgb(233, 238, 255),
+    rgb(255, 233, 240)
+  );
+}
+
+.start-page__beginning {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  justify-content: center;
+}
+
+.start-page__beginning > button {
+  width: 80vmin;
+  height: 8vh;
+  border: none;
+  background-color: rgb(248, 217, 230);
+  transition: 0.4s ease-in;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.start-page__beginning > button:hover {
+  background-color: #fac3da;
+  box-shadow: 0 0 5px #fac3da, 0 0 25px #fac3da, 0 0 50px #fac3da,
+    0 0 200px #fac3da;
+}
+/* size of the text */
+
+.start-page__section1 {
+  /* height: 90vh;
+  width: 90vw; */
+  background-color: rgb(153, 218, 229);
+  opacity: 50%;
+  color: black;
+  margin: 5% 25% 5% 5%;
+  width: 70%;
+  padding: 10% 5%;
+  text-align: justify;
+  text-justify: inter-word;
+  /* 1 rem is 16 pixels */
+}
+
+.start-page__section2 {
+  /* height: 90vh;
+  width: 90vw; */
+  background-color: black;
+  color: white;
+  margin: 5% 5% 5% 15%;
+  width: 70%;
+  padding: 10% 5%;
+  text-align: justify;
+  text-justify: inter-word;
+  /* 1 rem is 16 pixels */
+}
+/* one thing more to the left, another to the right -- one after another */
+.start-page__sections {
+  position: relative;
+  height: 150vh;
+  width: 100vw;
+}

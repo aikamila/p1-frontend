@@ -1,0 +1,22 @@
+import React, {useContext} from 'react'
+import { Link } from 'react-router-dom'
+import AuthContext from '../context/AuthContext'
+import './style/StartHeader.css';
+;
+
+
+const StartHeader = () => {
+    //let {authTokens, logout} = useContext(AuthContext);
+    return (
+        <header className='start-header'>
+            <nav className='start-header__navbar' aria-label='main navigation'>
+            <Link className="start-header__sign-up" role="button" to='/auth/signup'>Sign up</Link>
+            <span className='start-header__division'>   |   </span>
+            <Link className="start-header__log-in" role="button" to='/auth'>Log in</Link>
+            </nav>
+        </header>
+        
+    )
+}
+
+export default StartHeader

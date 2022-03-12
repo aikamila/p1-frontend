@@ -1,0 +1,9 @@
+.init-verification__button {
+  border: none;
+  transition: 0.4s ease-in;
+}
+.init-verification__button:hover {
+  background: #ff96ad;
+  box-shadow: 0 0 5px #96d0ff, 0 0 25px #ff96ad, 0 0 50px #ff96ad,
+    0 0 200px #ff96ad;
+}
