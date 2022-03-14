@@ -5,7 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import {AuthProvider} from './context/AuthContext'
-import HttpsRedirect from 'react-https-redirect';
+import HttpsRedirect from 'react-https-redirect'
 
 ReactDOM.render(
   <React.StrictMode>

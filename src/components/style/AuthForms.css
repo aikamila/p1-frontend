@@ -5,7 +5,7 @@
 
 .sign-up-form__background,
 .log-in-form__background {
-  background-color: rgb(250, 250, 250);
+  background-color: var(--background-gray);
   height: 35em;
   min-height: 80vh;
   display: flex;
@@ -53,6 +53,10 @@
 .log-in-form__el {
   width: 89%;
   position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 
 .sign-up-form__el.bio {
@@ -99,17 +103,7 @@
 .sign-up-form__el > span,
 .log-in-form__el > span {
   font-size: x-small;
-  position: absolute;
-  left: 0%;
   width: 100%;
-}
-
-.sign-up-form__el > span {
-  bottom: -1%;
-}
-
-.log-in-form__el > span {
-  bottom: 4%;
 }
 
 .sign-up-form__input[name="bio"] {
@@ -138,13 +132,14 @@
 .log-in-form__button:hover {
   border: 2px solid var(--nice-blue);
   background-color: white;
-  color: rgb(54, 155, 250);
+  color: var(--nice-blue);
 }
 
 .sign-up-form__login_link,
 .log-in-form__signup_link {
   color: var(--nice-blue);
   text-decoration: none;
+  text-align: center;
 }
 
 .sign-up-form__login_link:hover,
