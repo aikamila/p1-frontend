@@ -6,10 +6,9 @@
 .sign-up-form__background,
 .log-in-form__background {
   background-color: var(--background-gray);
-  height: 35em;
-  min-height: 80vh;
+  min-height: 85vh;
   display: flex;
-  align-items: center;
+  align-items: flex-start;
   justify-content: center;
 }
 
@@ -17,6 +16,7 @@
 .log-in-form__window {
   border: 1px solid lightgray;
   background-color: white;
+  margin-top: 35px;
   padding: 1%;
   display: flex;
   flex-direction: column;
@@ -72,8 +72,8 @@
   height: 35px;
 }
 
-.log-in-form__el {
-  height: 25%;
+.log-in-form__input {
+  height: 35px;
 }
 
 .log-in-form__el.cta {
@@ -135,7 +135,7 @@
 }
 
 .sign-up-form__login,
-.log-in-form__signup{
+.log-in-form__signup {
   text-align: center;
 }
 
