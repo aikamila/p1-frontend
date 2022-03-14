@@ -118,6 +118,7 @@ const SignUp = () =>{
     return (
         <main className='sign-up-form__background'>
             <div className='sign-up-form__window'>
+                <p className="sign-up-form__cta">Sign up to find<br/>your perfect coding buddy!</p>
                 <div className='sign-up-form__el email'>
                     <input type="text" aria-label="email" name="name" placeholder='Email' className='email sign-up-form__input' 
                     style={signUpEmailError ? {"border": "1px solid red"} : {}} value={signUpEmail} 
