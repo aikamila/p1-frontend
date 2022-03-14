@@ -28,7 +28,7 @@ const Login = () => {
                     {loginError && <span role="alert" className='log-in-form__error'>{`${loginError}`}</span>}
                 </div>
                 <button onClick={login} className="log-in-form__button" disabled={loginButtonDisabled}>Log in</button>
-                <p>I wanna <Link to="/auth/signup" className='log-in-form__signup_link'>sign up instead</Link></p>
+                <p className='log-in-form__signup'>I wanna <Link to="/auth/signup" className='log-in-form__signup_link'>sign up instead</Link></p>
             </div>
         </main>
     )

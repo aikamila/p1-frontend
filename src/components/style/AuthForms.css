@@ -59,17 +59,17 @@
   justify-content: center;
 }
 
-.sign-up-form__el.bio {
-  height: 12%;
+.sign-up-form__input.bio {
+  height: 43px;
 }
 
-.sign-up-form__el.name,
-.sign-up-form__el.lastname,
-.sign-up-form__el.email,
-.sign-up-form__el.password,
-.sign-up-form__el.password_second,
-.sign-up-form__el.username {
-  height: 10%;
+.sign-up-form__input.name,
+.sign-up-form__input.lastname,
+.sign-up-form__input.email,
+.sign-up-form__input.password,
+.sign-up-form__input.password_second,
+.sign-up-form__input.username {
+  height: 35px;
 }
 
 .log-in-form__el {
@@ -87,7 +87,6 @@
   background-color: var(--background-gray);
   border: 1px solid lightgray;
   width: 99%;
-  height: 70%;
   border-radius: 3px;
   -webkit-background-clip: padding-box;
   -moz-background-clip: padding;
@@ -135,11 +134,15 @@
   color: var(--nice-blue);
 }
 
+.sign-up-form__login,
+.log-in-form__signup{
+  text-align: center;
+}
+
 .sign-up-form__login_link,
 .log-in-form__signup_link {
   color: var(--nice-blue);
   text-decoration: none;
-  text-align: center;
 }
 
 .sign-up-form__login_link:hover,
@@ -150,4 +153,3 @@
 .sign-up-form__input.bio::placeholder {
   font-family: var(--fonts);
 }
-

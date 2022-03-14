@@ -182,7 +182,7 @@ const SignUp = () =>{
                     {signUpBioError && <span className="sign-up-form__error" role='alert' data-testid="signUpBioErr"> {signUpBioError}</span>}
                 </div>
                 <button onClick={signUp}disabled={disabled} className="sign-up-form__button">Sign up</button>
-                <p>Already have an account? <Link to="/auth" className='sign-up-form__login_link'>Log in</Link> instead</p>
+                <p className='sign-up-form__login'>Already have an account? <Link to="/auth" className='sign-up-form__login_link'>Log in</Link> instead</p>
             </div>
         </main>
     )
