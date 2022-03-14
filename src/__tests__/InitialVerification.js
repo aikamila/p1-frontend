@@ -152,5 +152,3 @@ test("previous user logged in + new user verifies their email successfully", asy
     waitFor(() => expect(screen.getByText(/your email was successfully verified/i)).toBeInTheDocument())
     await waitFor(() => expect(screen.queryByText(/your email was successfully verified/i)).not.toBeInTheDocument(), {timeout:5010})  
 })
-
-// snapshots will be taken using cypress or another method

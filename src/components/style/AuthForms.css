@@ -36,10 +36,13 @@
   .sign-up-form__window,
   .log-in-form__window {
     width: 90vw;
-    margin-top: 35px;
   }
   .sign-up-form__window {
     min-height: 72vh;
+    margin-top: 35px;
+  }
+  .log-in-form__window {
+    margin-top: 90px;
   }
 }
 
