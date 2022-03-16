@@ -117,7 +117,7 @@ const PostDetails = () => {
   }, [])
   return (
     <>
-      <HomeHeader/>
+      <HomeHeader disabled={disabled}/>
       <main className="post-details__background">
       { !postDeleteSuccess ? 
         loading ? 
@@ -128,7 +128,6 @@ const PostDetails = () => {
           <p className='post-details__init_err'>We weren't able to load the resource. Try again later</p> :
           <div data-testid="before-delete-success" className='post-details__window'>
             <article className='post-details__main'>
-
               {showDeleteDialog && <dialog className='post-details__delete_dialog' open>
               {loadingDelete ?
               <FiLoader role="img" className="post-details__del_loading_sign --spinner" aria-label="wait a moment"></FiLoader> :

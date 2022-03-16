@@ -6,13 +6,22 @@ exports[`login form is rendered correctly 1`] = `
 >
   <header
     className="auth-header"
+    role="banner"
   >
     <img
       alt="shangify brand logo"
-      src="shangify.png"
+      className="auth-header__img1"
+      src="shangify_logo.png"
+    />
+    <img
+      alt=""
+      className="auth-header__img2"
+      src="shangify_brand_name.png"
     />
     <nav
       aria-label="main navigation"
+      className="auth-header__nav"
+      role="navigation"
     >
       <a
         aria-label="Go back to the homepage"
@@ -92,7 +101,9 @@ exports[`login form is rendered correctly 1`] = `
       >
         Log in
       </button>
-      <p>
+      <p
+        className="log-in-form__signup"
+      >
         I wanna 
         <a
           className="log-in-form__signup_link"

@@ -4,19 +4,206 @@ exports[`all elements are rendered 1`] = `
 <div
   className="App"
 >
-  <header>
-    <nav>
-      <p
-        role="button"
+  <header
+    className="home-header__background"
+    role="banner"
+  >
+    <div>
+      <img
+        alt="shangify brand logo"
+        className="home-header__img1"
+        src="shangify_logo.png"
+      />
+      <img
+        alt=""
+        className="home-header__img2"
+        src="shangify_brand_name.png"
+      />
+    </div>
+    <nav
+      aria-label="main navigation"
+      className="home-header__nav"
+      role="navigation"
+    >
+      <a
+        aria-label="add a post"
+        href="/home/post/add"
+        onClick={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+          }
+        }
+        title="Add a post"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4z"
+          />
+          <path
+            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+          />
+        </svg>
+      </a>
+      <a
+        aria-label="homepage"
+        href="/home"
+        onClick={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+          }
+        }
+        title="Homepage"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 22h14a2 2 0 0 0 2-2v-9a1 1 0 0 0-.29-.71l-8-8a1 1 0 0 0-1.41 0l-8 8A1 1 0 0 0 3 11v9a2 2 0 0 0 2 2zm5-2v-5h4v5zm-5-8.59 7-7 7 7V20h-3v-5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v5H5z"
+          />
+        </svg>
+      </a>
+      <a
+        aria-label="my account"
+        href="/home/account/undefined"
+        onClick={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+          }
+        }
+        title="My account"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+          />
+        </svg>
+      </a>
+      <button
+        disabled={false}
       >
         Log out
-      </p>
+      </button>
     </nav>
   </header>
-  <main>
-    <p>
-      Wait a sec...
-    </p>
+  <main
+    className="list-posts__background"
+  >
+    <div
+      className="list-posts__center"
+    >
+      <div
+        className="list-posts__loading"
+      >
+        <svg
+          aria-label="wait a second"
+          className="list-posts__loading_sign --spinner"
+          fill="none"
+          height="1em"
+          role="img"
+          stroke="currentColor"
+          strokeLinecap="round"
+          strokeLinejoin="round"
+          strokeWidth="2"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <line
+            x1="12"
+            x2="12"
+            y1="2"
+            y2="6"
+          />
+          <line
+            x1="12"
+            x2="12"
+            y1="18"
+            y2="22"
+          />
+          <line
+            x1="4.93"
+            x2="7.76"
+            y1="4.93"
+            y2="7.76"
+          />
+          <line
+            x1="16.24"
+            x2="19.07"
+            y1="16.24"
+            y2="19.07"
+          />
+          <line
+            x1="2"
+            x2="6"
+            y1="12"
+            y2="12"
+          />
+          <line
+            x1="18"
+            x2="22"
+            y1="12"
+            y2="12"
+          />
+          <line
+            x1="4.93"
+            x2="7.76"
+            y1="19.07"
+            y2="16.24"
+          />
+          <line
+            x1="16.24"
+            x2="19.07"
+            y1="7.76"
+            y2="4.93"
+          />
+        </svg>
+      </div>
+    </div>
   </main>
 </div>
 `;

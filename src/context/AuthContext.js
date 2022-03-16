@@ -1,5 +1,5 @@
 import { createContext, useState, useEffect } from "react";
-import { useHistory, Redirect, useLocation } from "react-router-dom";
+import { useHistory, useLocation } from "react-router-dom";
 import { getItemAndCheckExpiry, setItemwith8MonthExpiry } from "../utils/LocalStorage";
 import { calculateTime } from "../utils/Timing";
 import { decodeUser } from "../utils/JWTDecode";

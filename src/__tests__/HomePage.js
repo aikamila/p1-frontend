@@ -27,28 +27,6 @@ const renderHomePage = (history) => {
     )
 }
 
-test("all header elements are accessible", () => {
-    const history = createMemoryHistory()
-    history.push("/home")
-    render(
-        <AuthContext.Provider value={{authTokens: {access: 'valid-access', refresh: 'valid-refresh'}, userId: 12}}>
-          <Router history = {history}>
-            <App />
-          </Router>
-        </AuthContext.Provider>
-      );
-    expect(screen.getByRole("button", {name: /log out/i})).toBeInTheDocument()
-    const linkAdd = screen.getByRole("link", {name: /add a new post/i})
-    const linkAccount = screen.getByRole("link", {name: /my account/})
-    const linkHomepage = screen.getByRole("link", {name: /homepage/i})
-    expect(linkAdd).toBeInTheDocument()
-    expect(linkAdd).toHaveAttribute('href', '/home/post/add')
-    expect(linkAccount).toBeInTheDocument()
-    expect(linkAccount).toHaveAttribute('href', '/home/account/12')
-    expect(linkHomepage).toBeInTheDocument()
-    expect(linkHomepage).toHaveAttribute('href', '/home')
-})
-
 test("user is able to log out - without any problems", async () => {
     const history = createMemoryHistory()
     history.push("/auth")
