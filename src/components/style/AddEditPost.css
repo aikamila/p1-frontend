@@ -92,7 +92,9 @@
   font-weight: 400;
   background-color: var(--nice-blue);
   margin-top: 2%;
-  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .post-add__add_button:disabled,

@@ -47,6 +47,11 @@
   margin-bottom: 1em;
 }
 
+.post-details__comment {
+  margin-top: 1em;
+  margin-bottom: 1em;
+}
+
 .post-details__author {
   text-decoration: none;
   color: black;
