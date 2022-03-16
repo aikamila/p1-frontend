@@ -44,7 +44,8 @@
   font-size: 0.8em;
 }
 
-.post-edit__content_input_wrapper {
+.post-edit__content_input_wrapper,
+.post-add__content_input_wrapper {
   margin-top: 1%;
   height: 40%;
   display: flex;
@@ -91,6 +92,7 @@
   font-weight: 400;
   background-color: var(--nice-blue);
   margin-top: 2%;
+  text-align: center;
 }
 
 .post-add__add_button:disabled,

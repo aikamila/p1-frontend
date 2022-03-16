@@ -69,8 +69,10 @@ const AddPost = () => {
         <>
           <h1 className='post-add__title'>Add a public post</h1>
           <p className='post-add__description' id="post-description">Remember to include a full description of your offer and your requirements.</p>
-          <textarea aria-label='your post' aria-describedby='post-description' placeholder='Share your idea with the world...' 
-          value={text} onChange={(e) => (countInput(e))} className='post-add__content_input'></textarea>
+          <div className='post-add__content_input_wrapper'>
+            <textarea aria-label='your post' aria-describedby='post-description' placeholder='Share your idea with the world...' 
+            value={text} onChange={(e) => (countInput(e))} className='post-add__content_input'></textarea>
+          </div>
           {minCharsCounter !== 30 && <><span className='post-add__input_counter'>{minCharsCounter}/30</span><br/></>}
           {textTooLong && <p role="alert" className='post-add__input_err'>Your post is too long</p>} 
           {failure && <p role="alert" className='post-add__input_err'>{failure}</p>}
