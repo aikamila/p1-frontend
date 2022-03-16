@@ -1,15 +1,13 @@
-import {render, screen, waitFor} from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 import { AuthProvider } from '../context/AuthContext'
-import {Router} from 'react-router-dom'
-import {createMemoryHistory} from 'history'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import * as storageUtils from '../utils/LocalStorage'
 import userEvent from '@testing-library/user-event'
-import renderer from 'react-test-renderer'
 
 jest.setTimeout(9000)
 
-// almost 100%
 
 afterEach(() => {
     localStorage.removeItem("authTokens")

@@ -1,11 +1,10 @@
-import {render, screen, waitFor} from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 import { AuthProvider } from '../context/AuthContext'
-import {Router} from 'react-router-dom'
-import {createMemoryHistory} from 'history'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import * as storageUtils from '../utils/LocalStorage'
 import userEvent from '@testing-library/user-event'
-import renderer from 'react-test-renderer'
 
 // this test doesn't seem to work with other tests - probably a problem with isolation
 // jest isolates tests in different modules, but not in one module

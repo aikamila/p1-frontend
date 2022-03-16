@@ -65,6 +65,17 @@
   background-color: var(--nice-blue);
   color: white;
   font-weight: 400;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 480px) {
+  .home-header__nav > button {
+    height: 2.5em;
+    width: 2.5em;
+  }
 }
 
 .home-header__nav > button:hover {

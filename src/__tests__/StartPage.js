@@ -1,5 +1,4 @@
-import {findAllByRole, render, screen, fireEvent, getByRole, getByPlaceholderText, waitFor, getByText} from '@testing-library/react'
-import Login from '../components/Login'
+import { render, screen } from '@testing-library/react'
 import App from '../App'
 import AuthContext, { AuthProvider } from '../context/AuthContext'
 import {Router} from 'react-router-dom'

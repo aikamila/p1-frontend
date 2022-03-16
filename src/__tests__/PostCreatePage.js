@@ -1,13 +1,12 @@
 import React from 'react'
-import {render, screen, waitFor, fireEvent } from '@testing-library/react'
-import {Router} from 'react-router-dom'
-import {createMemoryHistory} from 'history'
+import { render, screen, fireEvent } from '@testing-library/react'
+import { Router } from 'react-router-dom'
+import { createMemoryHistory } from 'history'
 import userEvent from '@testing-library/user-event'
-import renderer from 'react-test-renderer'
 import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
-import {server} from '../mocks/server'
-import {rest} from 'msw'
+import { server } from '../mocks/server'
+import { rest } from 'msw'
 
 test("all elements are initially rendered", () => {
     const history = createMemoryHistory();

@@ -1,7 +1,7 @@
 import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 import { AuthProvider } from '../context/AuthContext'
-import {Router} from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import * as storageUtils from '../utils/LocalStorage'
 import userEvent from '@testing-library/user-event'
