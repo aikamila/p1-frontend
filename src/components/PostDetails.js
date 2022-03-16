@@ -6,6 +6,7 @@ import Comment from './Comment'
 import { FiLoader } from "react-icons/fi"
 import './style/PostDetails.css'
 import './style/animations/Spinner.css'
+import HomeHeader from './HomeHeader'
 
 
 const PostDetails = () => {
@@ -115,90 +116,93 @@ const PostDetails = () => {
     fetchPost(postId) 
   }, [])
   return (
-    <main className="post-details__background" style={showDeleteDialog ? {backgroundColor: 'rgb(102, 100, 100)'} : {}}>
-    { !postDeleteSuccess ? 
-      loading ? 
-        <FiLoader role="img" aria-label="loading" className='post-details__init_loading_sign --spinner'></FiLoader> :
-        error404 ?
-        <p className='post-details__init_err'>This post doesn't exist anymore :(</p> :
-        serverError ?
-        <p className='post-details__init_err'>We weren't able to load the resource. Try again later</p> :
-        <div data-testid="before-delete-success" style={showDeleteDialog ? {
-          backgroundColor: 'rgb(175, 174, 174)', borderColor: 'black'
-        } : {}} className='post-details__window'>
-          <article className='post-details__main'>
+    <>
+      <HomeHeader/>
+      <main className="post-details__background" style={showDeleteDialog ? {backgroundColor: 'rgb(102, 100, 100)'} : {}}>
+      { !postDeleteSuccess ? 
+        loading ? 
+          <FiLoader role="img" aria-label="loading" className='post-details__init_loading_sign --spinner'></FiLoader> :
+          error404 ?
+          <p className='post-details__init_err'>This post doesn't exist anymore :(</p> :
+          serverError ?
+          <p className='post-details__init_err'>We weren't able to load the resource. Try again later</p> :
+          <div data-testid="before-delete-success" style={showDeleteDialog ? {
+            backgroundColor: 'rgb(175, 174, 174)', borderColor: 'black'
+          } : {}} className='post-details__window'>
+            <article className='post-details__main'>
 
-            {showDeleteDialog && <dialog className='post-details__delete_dialog' open>
-            {loadingDelete ?
-            <FiLoader role="img" className="post-details__del_loading_sign --spinner" aria-label="wait a moment"></FiLoader> :
-            postDeleteFailure ?
-            <>
-            <p>An error occured. Try to delete your post later</p>
-            <button onClick={closeDeleteDialog}>OK</button>
-            </> :
+              {showDeleteDialog && <dialog className='post-details__delete_dialog' open>
+              {loadingDelete ?
+              <FiLoader role="img" className="post-details__del_loading_sign --spinner" aria-label="wait a moment"></FiLoader> :
+              postDeleteFailure ?
               <>
-              <p>Are you sure that you wanna delete this post?</p>
-              <div>
-                <button onClick={handlePostDelete}>Yes</button>
-                <button onClick={closeDeleteDialog}>No</button>
+              <p>An error occured. Try to delete your post later</p>
+              <button onClick={closeDeleteDialog}>OK</button>
+              </> :
+                <>
+                <p>Are you sure that you wanna delete this post?</p>
+                <div>
+                  <button onClick={handlePostDelete}>Yes</button>
+                  <button onClick={closeDeleteDialog}>No</button>
+                </div>
+                </>
+              }
+                </dialog>}
+
+              <Link to={`/home/account/${post.user.id}`} style={
+                disabled ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}
+              } className="post-details__author">{post.user.username}</Link>
+
+              <br/>
+
+              <span className='post-details__time'>{post.time_since_posted}</span>
+
+              <p className='post-details__content'>{post.text}</p>
+
+              {post.user.id === userId && <Link to={`/home/post/${postId}/update`} style={
+                disabled ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}
+              } className="post-details__edit_link" aria-label="Edit this post">Edit</Link>}
+
+              {post.user.id === userId && <button disabled={disabled} id="detail-delete-button"
+              onClick={() => openDeleteDialog()} aria-label="Delete this post"
+              className='post-details__delete_button' style = {showDeleteDialog ? {backgroundColor: 'grey', color: 'darkgrey'} : {}}>Delete</button>}  
+
+
+              <section className='post-details__comments_section' aria-label={`Comments on the post: ${post.text.slice(0,120)}`}>
+                {post.comments.map(comment => <Comment
+                key={comment.id}
+                commentId={comment.id}
+                author={comment.user}
+                text={comment.text}
+                timeSincePosted={comment.time_since_posted}
+                comment={comment}
+                disabled={disabled}
+                showDeleteDialog={showDeleteDialog}
+                >
+                </Comment>)}
+              </section>
+              {commentSubmitErr && <><span role="alert" className='post-details__input_err'>{commentSubmitErr}</span><br/></>}
+              { commentTooLong && <span role="alert" className='post-details__input_err'
+              >Your comment can't be longer than 5000 characters.</span>}
+              <div className='post-details__input_el'>
+                <textarea value={comment} onChange={(e) => countComment(e)} placeholder='Add a comment...'
+                aria-label={`add a comment to the post: ${post.text.slice(0,120)}`}
+                className="post-details__input" style={showDeleteDialog ? {backgroundColor: 'rgb(175, 174, 174)'} : {}}/>
+                <button disabled={disabled || disabledSubmit} onClick={addComment} aria-label="submit your comment"
+                className='post-details__add_button comment' 
+                style={showDeleteDialog ? {backgroundColor: 'rgb(175, 174, 174)', color: 'black'}:{}}>Submit</button>
               </div>
-              </>
-            }
-              </dialog>}
-
-            <Link to={`/home/account/${post.user.id}`} style={
-              disabled ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}
-            } className="post-details__author">{post.user.username}</Link>
-
-            <br/>
-
-            <span className='post-details__time'>{post.time_since_posted}</span>
-
-            <p className='post-details__content'>{post.text}</p>
-
-            {post.user.id === userId && <Link to={`/home/post/${postId}/update`} style={
-              disabled ? {pointerEvents: 'none'} : {pointerEvents: 'auto'}
-            } className="post-details__edit_link" aria-label="Edit this post">Edit</Link>}
-
-            {post.user.id === userId && <button disabled={disabled} id="detail-delete-button"
-            onClick={() => openDeleteDialog()} aria-label="Delete this post"
-            className='post-details__delete_button' style = {showDeleteDialog ? {backgroundColor: 'grey', color: 'darkgrey'} : {}}>Delete</button>}  
-
-
-            <section className='post-details__comments_section' aria-label={`Comments on the post: ${post.text.slice(0,120)}`}>
-              {post.comments.map(comment => <Comment
-              key={comment.id}
-              commentId={comment.id}
-              author={comment.user}
-              text={comment.text}
-              timeSincePosted={comment.time_since_posted}
-              comment={comment}
-              disabled={disabled}
-              showDeleteDialog={showDeleteDialog}
-              >
-              </Comment>)}
-            </section>
-            {commentSubmitErr && <><span role="alert" className='post-details__input_err'>{commentSubmitErr}</span><br/></>}
-            { commentTooLong && <span role="alert" className='post-details__input_err'
-            >Your comment can't be longer than 5000 characters.</span>}
-            <div className='post-details__input_el'>
-              <textarea value={comment} onChange={(e) => countComment(e)} placeholder='Add a comment...'
-              aria-label={`add a comment to the post: ${post.text.slice(0,120)}`}
-              className="post-details__input" style={showDeleteDialog ? {backgroundColor: 'rgb(175, 174, 174)'} : {}}/>
-              <button disabled={disabled || disabledSubmit} onClick={addComment} aria-label="submit your comment"
-              className='post-details__add_button comment' 
-              style={showDeleteDialog ? {backgroundColor: 'rgb(175, 174, 174)', color: 'black'}:{}}>Submit</button>
-            </div>
-          </article>
-        </div>
-      :
-      <>
-        <p className='post-details__del_success'>Your post was successfully deleted</p>
-        <Link to="/home/post/add" className='post-details__del_success_link'>Create a new post</Link>
-        <Link to="/home" className='post-details__del_success_link'>Go back to the homepage</Link>
-      </>
-    }
-    </main>
+            </article>
+          </div>
+        :
+        <>
+          <p className='post-details__del_success'>Your post was successfully deleted</p>
+          <Link to="/home/post/add" className='post-details__del_success_link'>Create a new post</Link>
+          <Link to="/home" className='post-details__del_success_link'>Go back to the homepage</Link>
+        </>
+      }
+      </main>
+    </>
   )
 }
 

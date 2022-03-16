@@ -5,6 +5,7 @@ import ListEachPost from './ListEachPost'
 import './style/ListPosts.css'
 import { FiLoader } from 'react-icons/fi'
 import './style/animations/Spinner.css'
+import HomeHeader from './HomeHeader'
 
 
 const ListPosts = () => {
@@ -12,8 +13,6 @@ const ListPosts = () => {
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
   const [fetchError, setFetchError] = useState(false)
-//   const [postDeleteError, setPostDeleteError] = useState(false)
-//   const [postDeleteSuccess, setPostDeleteSuccess] = useState(false)
   
   useEffect(() => {
     const fetchPosts = async () => {
@@ -42,35 +41,36 @@ const ListPosts = () => {
       setLoading(true)}
   }, [])
   return (
-    <main className='list-posts__background'>
-      <div className='list-posts__center'>
-      {/* {postDeleteError && <dialog open>Uppps... something went wrong. Try to delete your post once again.</dialog>}
-      {postDeleteSuccess && <dialog open>Post successfully deleted!</dialog>} */}
-      {loading ?
-      <div className='list-posts__loading'>
-        <FiLoader aria-label="wait a second" role="img" className='list-posts__loading_sign --spinner'></FiLoader>
-      </div> :
-      fetchError ? 
-      <p className='list-posts__init_err'>We're not able to load the resources from the server. Please try again later.</p> :
-      <div className='list-posts__window'>
-        <h1 id="page-description" className='list-posts__title'>Recent Posts</h1>
-        <section aria-labelledby='page-description' className='list-posts__section' >
-          {
-          posts.map((post) => <ListEachPost 
-          key={post.id}
-          id={post.id} 
-          text={post.text}
-          user={post.user.id}
-          username={post.user.username}
-          time={post.time_since_posted}
-          engagementRate={post.engagement_rate}
-          ></ListEachPost>)
-          }
-        </section>
-      </div>
-      }
-      </div>
-    </main>
+    <>
+      <HomeHeader/>
+      <main className='list-posts__background'>
+        <div className='list-posts__center'>
+        {loading ?
+        <div className='list-posts__loading'>
+          <FiLoader aria-label="wait a second" role="img" className='list-posts__loading_sign --spinner'></FiLoader>
+        </div> :
+        fetchError ? 
+        <p className='list-posts__init_err'>We're not able to load the resources from the server. Please try again later.</p> :
+        <div className='list-posts__window'>
+          <h1 id="page-description" className='list-posts__title'>Recent Posts</h1>
+          <section aria-labelledby='page-description' className='list-posts__section' >
+            {
+            posts.map((post) => <ListEachPost 
+            key={post.id}
+            id={post.id} 
+            text={post.text}
+            user={post.user.id}
+            username={post.user.username}
+            time={post.time_since_posted}
+            engagementRate={post.engagement_rate}
+            ></ListEachPost>)
+            }
+          </section>
+        </div>
+        }
+        </div>
+      </main>
+    </>
   )
 }
 

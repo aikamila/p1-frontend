@@ -4,6 +4,7 @@ import api from '../api/PostsComments'
 import AuthContext from '../context/AuthContext'
 import { FiLoader } from "react-icons/fi"
 import './style/AddEditPost.css'
+import HomeHeader from './HomeHeader'
 
 
 const AddPost = () => {
@@ -58,32 +59,35 @@ const AddPost = () => {
     setDisabled(false)
   }
   return (
-    <main className='post-add__background'>
-      <div className='post-add__center'>
-        {success ? 
-        <div className='post-add__success'>
-          <p>Your post was created successfully</p>
-          <Link className="post-add__success_link" to="/home">Go back to the homepage</Link>
-          <Link className="post-add__success_link" to={`/home/account/${userId}`}>See your posts</Link>
-        </div>:
-        <>
-          <h1 className='post-add__title'>Add a public post</h1>
-          <p className='post-add__description' id="post-description">Remember to include a full description of your offer and your requirements.</p>
-          <div className='post-add__content_input_wrapper'>
-            <textarea aria-label='your post' aria-describedby='post-description' placeholder='Share your idea with the world...' 
-            value={text} onChange={(e) => (countInput(e))} className='post-add__content_input'></textarea>
-          </div>
-          {minCharsCounter !== 30 && <><span className='post-add__input_counter'>{minCharsCounter}/30</span><br/></>}
-          {textTooLong && <p role="alert" className='post-add__input_err'>Your post is too long</p>} 
-          {failure && <p role="alert" className='post-add__input_err'>{failure}</p>}
-          <button disabled={disabled} onClick={addPost} aria-label="Add your post" className='post-add__add_button'>Add</button>
-          <div className='post-add__loading_sign_div'>
-            {loading && <FiLoader role="img" aria-label="loading" className='post-add__loading_sign --spinner'></FiLoader>}
-          </div>
-        </>
-        }
-      </div>
-    </main>
+    <>
+      <HomeHeader/>
+      <main className='post-add__background'>
+        <div className='post-add__center'>
+          {success ? 
+          <div className='post-add__success'>
+            <p>Your post was created successfully</p>
+            <Link className="post-add__success_link" to="/home">Go back to the homepage</Link>
+            <Link className="post-add__success_link" to={`/home/account/${userId}`}>See your posts</Link>
+          </div>:
+          <>
+            <h1 className='post-add__title'>Add a public post</h1>
+            <p className='post-add__description' id="post-description">Remember to include a full description of your offer and your requirements.</p>
+            <div className='post-add__content_input_wrapper'>
+              <textarea aria-label='your post' aria-describedby='post-description' placeholder='Share your idea with the world...' 
+              value={text} onChange={(e) => (countInput(e))} className='post-add__content_input'></textarea>
+            </div>
+            {minCharsCounter !== 30 && <><span className='post-add__input_counter'>{minCharsCounter}/30</span><br/></>}
+            {textTooLong && <p role="alert" className='post-add__input_err'>Your post is too long</p>} 
+            {failure && <p role="alert" className='post-add__input_err'>{failure}</p>}
+            <button disabled={disabled} onClick={addPost} aria-label="Add your post" className='post-add__add_button'>Add</button>
+            <div className='post-add__loading_sign_div'>
+              {loading && <FiLoader role="img" aria-label="loading" className='post-add__loading_sign --spinner'></FiLoader>}
+            </div>
+          </>
+          }
+        </div>
+      </main>
+    </>
   )
 }
 

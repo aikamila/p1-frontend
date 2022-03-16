@@ -5,6 +5,7 @@ import api from '../api/PostsComments'
 import AuthContext from '../context/AuthContext'
 import './style/AddEditPost.css'
 import './style/animations/Spinner.css'
+import HomeHeader from './HomeHeader'
 
 
 const UpdatePost = () => {
@@ -93,43 +94,46 @@ const UpdatePost = () => {
     setDisabled(false)
   }
   return (
-    <main className='post-edit__background'>
-      {
-      initLoading ?
-      <div className='post-edit__init_loading_div'>
-        <FiLoader role="img" aria-label='loading' className='post-edit__init_loading_sign --spinner'></FiLoader>
-      </div> :
-      success ?
-      <div className='post-edit__center'>
-        <div className='post-edit__success'>
-          <p>Your post was updated successfully</p>
-          <Link to="/home">Go back to the homepage</Link>
-          <Link to={`/home/account/${userId}`}>See your posts</Link>
+    <>
+      <HomeHeader/>
+      <main className='post-edit__background'>
+        {
+        initLoading ?
+        <div className='post-edit__init_loading_div'>
+          <FiLoader role="img" aria-label='loading' className='post-edit__init_loading_sign --spinner'></FiLoader>
+        </div> :
+        success ?
+        <div className='post-edit__center'>
+          <div className='post-edit__success'>
+            <p>Your post was updated successfully</p>
+            <Link to="/home">Go back to the homepage</Link>
+            <Link to={`/home/account/${userId}`}>See your posts</Link>
+          </div>
+        </div> :
+        initFailure ? 
+        <div className='post-edit__init_err_div'>
+          <p className='post-edit__init_failure'>{initFailure}</p>
+        </div> :
+        <div className='post-edit__center'>
+          <h1 className='post-edit__title'>Edit your post</h1>
+          <p className='post-edit__description' id="post-description">Don't change the overall meaning of your post. Add only necessary information.</p>
+          <div className='post-edit__content_input_wrapper'>
+            <textarea aria-label='your edited post' aria-describedby='post-description' value={text} placeholder='Share your idea with the world...'
+            onChange={(e) => countInput(e)} className="post-edit__content_input"/>
+          </div>
+          {minCharsCounter !== 30 && <><span className="post-edit__input_counter">{minCharsCounter}/30</span><br/></>}
+          {textTooLong && <p role="alert" className='post-edit__input_err'>Your post is too long</p>}
+          {failure && <p role="alert" className='post-edit__input_err'>{failure}</p>}
+          <button onClick={updatePost} disabled={disabled} className='post-edit__save_button'>
+            Save changes
+          </button>
+          <div className='post-edit__loading_sign_div'>
+            {loading && <FiLoader role="img" aria-label="loading" className='post-edit__loading_sign --spinner'></FiLoader>}
+          </div>
         </div>
-      </div> :
-      initFailure ? 
-      <div className='post-edit__init_err_div'>
-        <p className='post-edit__init_failure'>{initFailure}</p>
-      </div> :
-      <div className='post-edit__center'>
-        <h1 className='post-edit__title'>Edit your post</h1>
-        <p className='post-edit__description' id="post-description">Don't change the overall meaning of your post. Add only necessary information.</p>
-        <div className='post-edit__content_input_wrapper'>
-          <textarea aria-label='your edited post' aria-describedby='post-description' value={text} placeholder='Share your idea with the world...'
-          onChange={(e) => countInput(e)} className="post-edit__content_input"/>
-        </div>
-        {minCharsCounter !== 30 && <><span className="post-edit__input_counter">{minCharsCounter}/30</span><br/></>}
-        {textTooLong && <p role="alert" className='post-edit__input_err'>Your post is too long</p>}
-        {failure && <p role="alert" className='post-edit__input_err'>{failure}</p>}
-        <button onClick={updatePost} disabled={disabled} className='post-edit__save_button'>
-          Save changes
-        </button>
-        <div className='post-edit__loading_sign_div'>
-          {loading && <FiLoader role="img" aria-label="loading" className='post-edit__loading_sign --spinner'></FiLoader>}
-        </div>
-      </div>
-      }
-    </main>
+        }
+      </main>
+    </>
   )
 }
 

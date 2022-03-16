@@ -1,5 +1,4 @@
 import React,{useContext} from 'react'
-import HomeHeader from '../components/HomeHeader'
 import AuthContext from '../context/AuthContext'
 import { Switch, Route } from 'react-router-dom'
 import ListPosts from '../components/ListPosts'
@@ -15,7 +14,6 @@ const HomePage = () => {
 
     return (
         <>
-            <HomeHeader />
             {initialVerificationSuccessful && <p role="alert">Your email was successfully verified!</p>}
             <Switch>
                 <Route path="/home/account/:id" component={UserAccount} />

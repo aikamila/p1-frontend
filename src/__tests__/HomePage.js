@@ -9,7 +9,6 @@ import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
 import {server} from '../mocks/server'
 import {rest} from 'msw'
-import {act} from 'react-dom/test-utils'
 import ListEachPost from '../components/ListEachPost'
 
 afterEach(() => {
@@ -29,17 +28,25 @@ const renderHomePage = (history) => {
 }
 
 test("all header elements are accessible", () => {
-    // add maybe my account etc
     const history = createMemoryHistory()
     history.push("/home")
     render(
-        <AuthContext.Provider value={{authTokens: {access: 'valid-access', refresh: 'valid-refresh'}}}>
+        <AuthContext.Provider value={{authTokens: {access: 'valid-access', refresh: 'valid-refresh'}, userId: 12}}>
           <Router history = {history}>
             <App />
           </Router>
         </AuthContext.Provider>
       );
     expect(screen.getByRole("button", {name: /log out/i})).toBeInTheDocument()
+    const linkAdd = screen.getByRole("link", {name: /add a new post/i})
+    const linkAccount = screen.getByRole("link", {name: /my account/})
+    const linkHomepage = screen.getByRole("link", {name: /homepage/i})
+    expect(linkAdd).toBeInTheDocument()
+    expect(linkAdd).toHaveAttribute('href', '/home/post/add')
+    expect(linkAccount).toBeInTheDocument()
+    expect(linkAccount).toHaveAttribute('href', '/home/account/12')
+    expect(linkHomepage).toBeInTheDocument()
+    expect(linkHomepage).toHaveAttribute('href', '/home')
 })
 
 test("user is able to log out - without any problems", async () => {
@@ -213,112 +220,9 @@ test("all posts of other users are rendered properly", () => {
             ></ListEachPost>
         </AuthContext.Provider>
     </Router>)
-    screen.debug()
     expect(screen.getByText("a".repeat(110))).toBeInTheDocument()
     expect(screen.queryByText("a".repeat(110) + "...")).not.toBeInTheDocument()
     expect(screen.getByRole("link", {name: /see more/i})).toHaveAttribute("href", "/home/post/1")
     expect(screen.queryByRole("link", {name: /edit/i})).not.toBeInTheDocument()
     expect(screen.getByRole("link", {name: /see more about this post on another page/i})).toBeInTheDocument()
 })
-
-// test("delete button works", async () => {
-//     // making sure that deleting posts at the home page is handled correctly
-//     const history = createMemoryHistory();
-//     history.push("/home")
-//     const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-//         render(
-//         <Router history={history}>
-//             <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-//             userId: 1, updateToken: null}}>
-//                 <HomePage />
-//             </AuthContext.Provider>
-//         </Router>
-//         )
-//     userEvent.click(await screen.findByRole("button", {name:/delete/i}))
-//     await waitFor(() => expect(screen.queryByText(/anyone interested in helping me with a django app/i)).not.toBeInTheDocument())
-//     expect(screen.getByRole("dialog")).toBeInTheDocument()
-//     expect(screen.getByText(/Post successfully deleted!/)).toBeInTheDocument()
-//     expect(screen.queryByText('user1')).not.toBeInTheDocument()
-//     expect(screen.queryByText('1 day ago')).not.toBeInTheDocument()
-//     expect(screen.getAllByRole('article')).toHaveLength(1)
-//     expect(screen.queryByText(/number of comments: 7/i)).not.toBeInTheDocument()
-//     expect(screen.queryByRole("button", {name: /delete/i})).not.toBeInTheDocument()
-//     expect(screen.queryByRole("button", {name:/update/i})).not.toBeInTheDocument()
-//     // making sure that posts get fetched from the API when the component is unmounted and then mounted again
-//     history.push('/home/account/10')
-//     history.push('/home')
-//     expect(await screen.findByText(/anyone interested in helping me with a django app/i)).toBeInTheDocument()
-//     waitFor(() => expect(screen.getByRole("dialog")).toBeInTheDocument(), {timeout: 2000})
-// })
-
-// test("handling errors from the server while deleting a post - waiting for the dialog to disappear", async() => {
-//     // making sure that any error while deleting a post is handled correctly
-//     const history = createMemoryHistory();
-//     history.push("/home")
-//     const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-//     server.use(
-//         rest.delete('https://arcane-spire-03245.herokuapp.com/api/services/posts/1/', (req, res, ctx) => {
-//           return res.once(
-//               ctx.status(500)
-//           )
-//         }),
-//       )
-//         render(
-//         <Router history={history}>
-//             <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-//             userId: 1, updateToken: null}}>
-//                 <HomePage />
-//             </AuthContext.Provider>
-//         </Router>
-//         )
-//     userEvent.click(await screen.findByRole("button", {name:/delete/i}))
-//     expect(await screen.findByRole("dialog")).toBeInTheDocument()
-//     expect(screen.getByText("Uppps... something went wrong. Try to delete your post once again.")).toBeInTheDocument()
-//     expect(screen.queryByText(/anyone interested in helping me with a django app/i)).toBeInTheDocument()
-//     expect(screen.queryByText('user1')).toBeInTheDocument()
-//     expect(screen.queryByText('1 day ago')).toBeInTheDocument()
-//     expect(screen.getAllByRole('article')).toHaveLength(2)
-//     expect(screen.queryByText(/number of comments: 7/i)).toBeInTheDocument()
-//     expect(screen.queryByRole("button", {name: /delete/i})).toBeInTheDocument()
-//     expect(screen.queryByRole("button", {name:/update/i})).toBeInTheDocument()
-//     await waitFor(() => expect(screen.queryByText("Uppps... something went wrong. Try to delete your post once again.")).not.toBeInTheDocument(),
-//     {timeout: 5000})
-
-// })
-
-// test("handling errors from the server while deleting a post - dialog should disappear when the user succeeds in deleting the post", async() => {
-//     // making sure that any error while deleting a post is handled correctly
-//     const history = createMemoryHistory();
-//     history.push("/home")
-//     const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-//     server.use(
-//         rest.delete('https://arcane-spire-03245.herokuapp.com/api/services/posts/1/', (req, res, ctx) => {
-//           return res.once(
-//               ctx.status(500)
-//           )
-//         }),
-//       )
-//         render(
-//         <Router history={history}>
-//             <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-//             userId: 1, updateToken: null}}>
-//                 <HomePage />
-//             </AuthContext.Provider>
-//         </Router>
-//         )
-//     userEvent.click(await screen.findByRole("button", {name:/delete/i}))
-//     expect(await screen.findByRole("dialog")).toBeInTheDocument()
-//     expect(screen.getByText("Uppps... something went wrong. Try to delete your post once again.")).toBeInTheDocument()
-//     userEvent.click(screen.getByRole("button", {name:/delete/i}))
-//     expect(await screen.findByText(/Post successfully deleted!/)).toBeInTheDocument()
-//     expect(screen.getAllByRole("dialog")).toHaveLength(1)
-//     expect(screen.queryByText(/anyone interested in helping me with a django app/i)).not.toBeInTheDocument()
-//     expect(screen.queryByText('user1')).not.toBeInTheDocument()
-//     expect(screen.queryByText('1 day ago')).not.toBeInTheDocument()
-//     expect(screen.getAllByRole('article')).toHaveLength(1)
-//     expect(screen.queryByText(/number of comments: 7/i)).not.toBeInTheDocument()
-//     expect(screen.queryByRole("button", {name: /delete/i})).not.toBeInTheDocument()
-//     expect(screen.queryByRole("button", {name:/update/i})).not.toBeInTheDocument()
-// })
-
-// // another test for links
