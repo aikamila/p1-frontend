@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import api from '../api/PostsComments'
 import AuthContext from '../context/AuthContext'
 
-const Comment = ({commentId, author, text, timeSincePosted, comment, disabled, showDeleteDialog}) => {
+const Comment = ({commentId, author, text, timeSincePosted, comment, disabled}) => {
   let {authTokens, userId} = useContext(AuthContext)
   const [reply, setReply] = useState("")
   const [replyTooLong, setReplyTooLong] = useState(false)
@@ -71,11 +71,9 @@ const Comment = ({commentId, author, text, timeSincePosted, comment, disabled, s
         { replyTooLong && <span role="alert" className='post-details__input_err'>Your reply can't be longer than 5000 characters.</span>}
         <div className='post-details__input_el'>
           <textarea data-testid={`input-comment-${commentId}`} value={reply} onChange={(e) => countReply(e)} placeholder='Add a reply...'
-          aria-label={`add a reply to the comment: ${text.slice(0,120)}`} className="post-details__input" 
-          style={showDeleteDialog ? {backgroundColor: 'rgb(175, 174, 174)'} : {}}/>
+          aria-label={`add a reply to the comment: ${text.slice(0,120)}`} className="post-details__input"/>
           <button data-testid={`button-comment-${commentId}`} disabled={disabled||disabledSubmit} 
-          onClick={addReply} aria-label="submit your reply" className='post-details__add_button reply'
-          style={showDeleteDialog ? {backgroundColor: 'rgb(175, 174, 174)', color: "black"} : {}}>Submit</button>
+          onClick={addReply} aria-label="submit your reply" className='post-details__add_button reply'>Submit</button>
         </div>
       </article>
     </>

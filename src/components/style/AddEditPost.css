@@ -108,12 +108,12 @@
   border: 1px solid rgb(148, 148, 148);
 }
 
-.post-add__input_counter,
+/* .post-add__input_counter,
 .post-edit__input_counter {
   /* position: absolute;
   top: 61%;
   left: 5%; */
-}
+/* } */ 
 
 .post-add__input_err,
 .post-edit__input_err {

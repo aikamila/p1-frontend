@@ -7,7 +7,7 @@ import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import AuthContext, { AuthProvider } from '../context/AuthContext'
 import '@testing-library/jest-dom/extend-expect'
 import userEvent from "@testing-library/user-event";
-import renderer, { create } from 'react-test-renderer';
+import renderer from 'react-test-renderer';
 
 // 100 %
 

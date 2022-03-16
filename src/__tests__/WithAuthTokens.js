@@ -1,13 +1,10 @@
 import React from "react";
-import Signup from "../components/SignUp"
-import {createMemoryHistory} from 'history'
-import {Router} from 'react-router-dom'
+import { createMemoryHistory } from 'history'
+import { Router } from 'react-router-dom'
 import App from '../App'
-import {findAllByRole, render, screen, fireEvent} from '@testing-library/react'
-import { context } from "msw";
+import { render } from '@testing-library/react'
 import AuthContext from '../context/AuthContext'
 import '@testing-library/jest-dom/extend-expect'
-import SignUp from "../components/SignUp";
 
 // testing all routes using auth tokens
 

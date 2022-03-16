@@ -6,6 +6,7 @@ import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
 import { server } from '../mocks/server'
 import { rest } from 'msw'
+import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers'
 
 
 const renderPostDetailPage = (history, userId) => {
@@ -292,21 +293,7 @@ test("error while deleting a post is handled gracefully", async() => {
     history.push('/home/post/1')
     renderPostDetailPage(history, 1)
     expect(await screen.findByRole("button", {name: /delete this post/i})).toBeInTheDocument()
-    expect(screen.getByTestId("before-delete-success")).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', borderColor: 'black'})
-    expect(screen.getByRole("main")).not.toHaveStyle({backgroundColor: 'rgb(102, 100, 100)'})
-    expect(screen.getByRole("button", {name: /delete this post/i})).not.toHaveStyle({backgroundColor: 'grey', color: 'darkgrey'})
-    expect(screen.getByRole("textbox", {name: /add a comment/i})).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)'})
-    expect(screen.getAllByRole("textbox", {name: /add a reply/i})[0]).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)'})
-    expect(screen.getByRole("button", {name: /submit your comment/i})).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', color: 'black'})
-    expect(screen.getAllByRole("button", {name: /submit your reply/i})[0]).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', color: 'black'})
     userEvent.click(screen.getByRole("button", {name: /delete this post/i}))
-    expect(screen.getByTestId("before-delete-success")).toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', borderColor: 'black'})
-    expect(screen.getByRole("main")).toHaveStyle({backgroundColor: 'rgb(102, 100, 100)'})
-    expect(screen.getByRole("button", {name: /delete this post/i})).toHaveStyle({backgroundColor: 'grey', color: 'darkgrey'})
-    expect(screen.getByRole("textbox", {name: /add a comment/i})).toHaveStyle({backgroundColor: 'rgb(175, 174, 174)'})
-    expect(screen.getAllByRole("textbox", {name: /add a reply/i})[0]).toHaveStyle({backgroundColor: 'rgb(175, 174, 174)'})
-    expect(screen.getByRole("button", {name: /submit your comment/i})).toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', color: 'black'})
-    expect(screen.getAllByRole("button", {name: /submit your reply/i})[0]).toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', color: 'black'})
     userEvent.click(screen.getByRole("button", {name: /^yes$/i}))
     expect(await screen.findByText(/an error occured/i)).toBeInTheDocument()
     expect(screen.queryByRole("img", {name: /wait a moment/i})).not.toBeInTheDocument()
@@ -325,13 +312,6 @@ test("error while deleting a post is handled gracefully", async() => {
     expect(screen.getByRole('link', {name: /edit this post/i})).toHaveStyle('pointerEvents: none')
     expect(screen.getByRole("button", {name: /delete this post/i})).toBeDisabled()
     userEvent.click(screen.getByRole("button", {name: /^ok$/i}))
-    expect(screen.getByTestId("before-delete-success")).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', borderColor: 'black'})
-    expect(screen.getByRole("main")).not.toHaveStyle({backgroundColor: 'rgb(102, 100, 100)'})
-    expect(screen.getByRole("button", {name: /delete this post/i})).not.toHaveStyle({backgroundColor: 'grey', color: 'darkgrey'})
-    expect(screen.getByRole("textbox", {name: /add a comment/i})).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)'})
-    expect(screen.getAllByRole("textbox", {name: /add a reply/i})[0]).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)'})
-    expect(screen.getByRole("button", {name: /submit your comment/i})).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', color: 'black'})
-    expect(screen.getAllByRole("button", {name: /submit your reply/i})[0]).not.toHaveStyle({backgroundColor: 'rgb(175, 174, 174)', color: 'black'})
     expect(screen.queryByRole("dialog")).not.toBeInTheDocument()
     expect(screen.queryByTestId("before-delete-success")).toBeInTheDocument()
     links = screen.getAllByRole("link")
