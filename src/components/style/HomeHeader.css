@@ -1,0 +1,50 @@
+.home-header__background {
+  border-bottom: 1px solid lightgray;
+  height: 54px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.home-header__background > div {
+  display: inline;
+}
+.home-header__nav {
+  display: inline-flex;
+  align-items: center;
+}
+
+.home-header__img1,
+.home-header__img2 {
+  height: 47px;
+  margin-left: 4px;
+}
+
+.home-header__nav > a {
+  text-decoration: none;
+  color: var(--nice-blue);
+}
+
+.home-header__nav > a,
+.home-header__nav > button {
+  margin-left: 12px;
+}
+
+@media screen and (min-width: 481px) {
+  .home-header__nav > a {
+    font-size: 1.5em;
+  }
+}
+
+.home-header__nav > button {
+  margin-right: 20px;
+  border-radius: 3px;
+  border-color: transparent;
+  background-color: var(--nice-blue);
+  color: white;
+  font-weight: 400;
+}
+
+.home-header__nav > button:hover {
+  cursor: pointer;
+}

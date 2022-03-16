@@ -10,10 +10,10 @@ import shangify from './style/images/shangify.png'
 const AuthHeader = () => {
     const history = useHistory();
     return (
-        <header className="auth-header">
+        <header className="auth-header" role="banner">
             <img className="auth-header__img1" src={shangify_logo} alt="shangify brand logo"></img>
             <img className="auth-header__img2" src={shangify_brand_name} alt=""></img>
-            <nav aria-label="main navigation" className="auth-header__nav">
+            <nav aria-label="main navigation" className="auth-header__nav" role="navigation">
                 <Link className="auth-header__homepage_link"aria-label="Go back to the homepage" to="/"><AiOutlineClose /></Link>
             </nav>
         </header>
