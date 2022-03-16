@@ -1,14 +1,12 @@
-import {AiOutlineClose} from "react-icons/ai";
-import {useHistory, Link} from 'react-router-dom'
+import { AiOutlineClose } from "react-icons/ai";
+import { Link } from 'react-router-dom'
 import React from 'react'
 import './style/AuthHeader.css'
 import shangify_logo from './style/images/shangify_logo.png'
 import shangify_brand_name from './style/images/shangify_brand_name.png'
-import shangify from './style/images/shangify.png'
 
 
 const AuthHeader = () => {
-    const history = useHistory();
     return (
         <header className="auth-header" role="banner">
             <img className="auth-header__img1" src={shangify_logo} alt="shangify brand logo"></img>

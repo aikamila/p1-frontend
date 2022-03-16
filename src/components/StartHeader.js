@@ -1,12 +1,10 @@
-import React, {useContext} from 'react'
+import React from 'react'
 import { Link } from 'react-router-dom'
-import AuthContext from '../context/AuthContext'
 import './style/StartHeader.css';
 ;
 
 
 const StartHeader = () => {
-    //let {authTokens, logout} = useContext(AuthContext);
     return (
         <header className='start-header'>
             <nav className='start-header__navbar' aria-label='main navigation'>

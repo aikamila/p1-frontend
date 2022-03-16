@@ -1,8 +1,7 @@
-import React, {useContext, useEffect, useState} from 'react'
+import React, { useContext, useState } from 'react'
 import Reply from './Reply'
 import { Link } from 'react-router-dom'
 import api from '../api/PostsComments'
-import { response } from 'msw'
 import AuthContext from '../context/AuthContext'
 
 const Comment = ({commentId, author, text, timeSincePosted, comment, disabled, showDeleteDialog}) => {

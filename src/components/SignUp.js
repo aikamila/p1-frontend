@@ -1,8 +1,7 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, { useContext, useState } from 'react'
 import AuthContext from '../context/AuthContext'
 import { useHistory, Link } from 'react-router-dom'
 import './style/AuthForms.css'
-import AuthHeader from './AuthHeader'
 
 const SignUp = () =>{
 

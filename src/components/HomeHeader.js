@@ -1,4 +1,4 @@
-import React, {useContext} from 'react'
+import React, { useContext } from 'react'
 import AuthContext from '../context/AuthContext'
 import { Link } from 'react-router-dom'
 import './style/HomeHeader.css'
@@ -11,7 +11,7 @@ import { BsFillPersonFill } from "react-icons/bs"
 
 
 const HomeHeader = () => {
-    let { logout, userId} = useContext(AuthContext)
+    const {logout, userId} = useContext(AuthContext)
     return (
         <header role="banner" className='home-header__background'>
             <div>

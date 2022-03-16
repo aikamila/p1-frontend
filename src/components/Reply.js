@@ -1,7 +1,7 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
 
-const Reply = ({replyId, author, text, timeSincePosted, disabled }) => {
+const Reply = ({ author, text, timeSincePosted, disabled }) => {
   return (
     <article className='post-details__reply'>
       <Link to={`/home/account/${author.id}`} style={

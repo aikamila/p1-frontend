@@ -1,14 +1,14 @@
-import {render, screen, waitFor} from '@testing-library/react'
+import { render, screen, waitFor } from '@testing-library/react'
 import App from '../App'
 import { AuthProvider } from '../context/AuthContext'
 import {Router} from 'react-router-dom'
-import {createMemoryHistory} from 'history'
+import { createMemoryHistory } from 'history'
 import * as storageUtils from '../utils/LocalStorage'
 import userEvent from '@testing-library/user-event'
 import * as timingUtils from "../utils/Timing"
 import renderer from 'react-test-renderer'
-import {server} from '../mocks/server'
-import {response, rest} from 'msw'
+import { server } from '../mocks/server'
+import { rest } from 'msw'
 
 
 afterEach(() => {

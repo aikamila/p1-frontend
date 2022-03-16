@@ -1,4 +1,4 @@
-import React, {useState, useContext} from 'react'
+import React, { useState, useContext } from 'react'
 import { Link } from 'react-router-dom'
 import api from '../api/PostsComments'
 import AuthContext from '../context/AuthContext'

@@ -1,7 +1,7 @@
-import React, {useContext, useState, useEffect} from 'react'
+import React, { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
-import {AiFillStar} from 'react-icons/ai'
+import { AiFillStar } from 'react-icons/ai'
 import './style/InitialVerificationPage.css'
 
 const InitialVerificationPage = () => {

@@ -1,10 +1,8 @@
-import logo from './logo.svg';
 import './App.css';
-import { BrowserRouter as Router, Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import StartPage from './pages/StartPage';
 import PrivateRoute from './utils/PrivateRoute';
 import PublicRoute from './utils/PublicRoute';
-
 import AuthPage from './pages/AuthPage';
 import HomePage from './pages/HomePage';
 import InitialVerificationPage from './pages/InitialVerificationPage';
@@ -13,7 +11,6 @@ import UnsuccessfulInitialVerificationPage from './pages/UnsuccessfulInitialVeri
 function App() {
   return (
      <div className="App">
-
           <PublicRoute path="/" exact>
             <StartPage/>
           </PublicRoute>
@@ -27,9 +24,7 @@ function App() {
               <Route path="/verification/unsuccessful" component={UnsuccessfulInitialVerificationPage}/>
               <Route path="/verification/:id/:token" component={InitialVerificationPage} />
             </Switch>
-
      </div>
-
   );
 }
 

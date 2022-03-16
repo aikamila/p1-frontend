@@ -1,4 +1,4 @@
-import React, {useContext, useRef} from 'react'
+import React, { useContext, useRef } from 'react'
 import StartHeader from '../components/StartHeader'
 import AuthContext from '../context/AuthContext'
 import './style/StartPage.css'
