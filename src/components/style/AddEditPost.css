@@ -1,6 +1,5 @@
 .post-add__background,
 .post-edit__background {
-  height: 37em;
   min-height: 70vh;
   background-color: var(--background-gray);
   display: flex;
@@ -11,7 +10,7 @@
 
 .post-add__center,
 .post-edit__center {
-  --width: 50em;
+  --width: 45em;
 }
 
 @media screen and (max-width: 820px) {
@@ -27,16 +26,16 @@
   background-color: white;
   border: 1px solid lightgray;
   width: var(--width);
-  height: 31em;
+  height: 25em;
   margin-top: 3em;
   margin-bottom: 8em;
-  padding: 3% 3%;
+  padding: 2%;
   position: relative;
 }
 
 .post-add__title,
 .post-edit__title {
-  margin-top: 1%;
+  margin-top: -1%;
 }
 
 .post-add__description,
@@ -45,12 +44,19 @@
   font-size: 0.8em;
 }
 
+.post-edit__content_input_wrapper {
+  margin-top: 1%;
+  height: 40%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .post-add__content_input,
 .post-edit__content_input {
+  width: 100%;
+  height: 90%;
   resize: none;
-  width: 98%;
-  margin-top: 1%;
-  height: 35%;
   border: 1px solid lightgray;
   border-radius: 3px;
   font-family: var(--fonts);
