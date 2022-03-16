@@ -27,20 +27,20 @@
   background-color: white;
   border: 1px solid lightgray;
   width: var(--width);
-  margin-top: 3em;
   height: 31em;
+  margin-top: 3em;
+  margin-bottom: 8em;
+  padding: 3% 3%;
   position: relative;
 }
 
 .post-add__title,
 .post-edit__title {
-  margin: 3% 5%;
+  margin-top: 1%;
 }
 
 .post-add__description,
 .post-edit__description {
-  margin-left: 5%;
-  margin-right: 5%;
   margin-bottom: 0%;
   font-size: 0.8em;
 }
@@ -48,8 +48,7 @@
 .post-add__content_input,
 .post-edit__content_input {
   resize: none;
-  width: 90%;
-  margin-left: 5%;
+  width: 98%;
   margin-top: 1%;
   height: 35%;
   border: 1px solid lightgray;
@@ -69,9 +68,6 @@
 }
 
 .post-add__add_button {
-  /* position: absolute;
-  top: 68%;
-  left: 5%; */
   height: 6%;
   width: 12%;
 }
@@ -88,7 +84,6 @@
   color: white;
   font-weight: 400;
   background-color: var(--nice-blue);
-  margin-left: 5%;
   margin-top: 2%;
 }
 
@@ -108,13 +103,12 @@
   /* position: absolute;
   top: 61%;
   left: 5%; */
-  margin-left: 5%;
 }
 
 .post-add__input_err,
 .post-edit__input_err {
   color: red;
-  margin: 0% 5%;
+  margin: 0%;
   font-size: 0.8em;
 }
 

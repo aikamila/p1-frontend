@@ -7,7 +7,7 @@ const HomeHeader = () => {
     return (
         <header>
             <nav>
-                <Link to="/post/add">Add</Link>
+                <Link to="/home/post/add">Add</Link>
                 <p role="button" onClick={logout}>Log out</p>
             </nav>
         </header>
