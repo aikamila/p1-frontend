@@ -3,10 +3,7 @@ import App from '../App'
 import AuthContext, { AuthProvider } from '../context/AuthContext'
 import {Router} from 'react-router-dom'
 import {createMemoryHistory} from 'history'
-import { useHistory } from 'react-router-dom'
-import * as storageUtils from '../utils/LocalStorage'
 import userEvent from '@testing-library/user-event'
-import { act } from 'react-dom/test-utils'
 import StartHeader from '../components/StartHeader'
 import renderer from 'react-test-renderer';
 

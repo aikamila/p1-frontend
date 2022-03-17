@@ -335,7 +335,6 @@ test("bug fix -- if one or more of the fields are empty and the server response 
   userEvent.click(screen.getByRole("button", {name: /log in/i}))
   expect(await screen.findByText(/invalid credentials/i)).toBeInTheDocument()
   userEvent.type(screen.getByRole("textbox", {name: /email/i}), "{backspace}{backspace}")
-  screen.debug()
   userEvent.type(screen.getByRole("textbox", {name: /password/i}), "ee")
   userEvent.click(screen.getByRole("button", {name: /log in/i}))
   expect(await screen.findByText(/invalid credentials/i)).toBeInTheDocument()

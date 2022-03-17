@@ -1,9 +1,10 @@
 import { render, screen } from '@testing-library/react'
-import react from 'react'
 import HomeHeader from '../components/HomeHeader'
 import AuthContext from '../context/AuthContext'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
+import renderer from 'react-test-renderer'
+
 
 const renderHomeHeader = (disabled) => {
     const history = createMemoryHistory()
@@ -16,7 +17,6 @@ const renderHomeHeader = (disabled) => {
         </Router>
     )
 }
-
 
 test("all elements of the header are fully accessible", () => {
     renderHomeHeader();
@@ -51,4 +51,19 @@ test("all controls are disabled", () => {
     expect(linkAdd).toHaveStyle('pointerEvents: none')
     expect(linkAccount).toHaveStyle('pointerEvents: none')
     expect(linkHomepage).toHaveStyle('pointerEvents: none')
+})
+
+
+test("all elements are rendered correctly", () => {
+    const history = createMemoryHistory()
+    const page = renderer
+    .create(
+        <Router history={history}>
+            <AuthContext.Provider value={{logout: jest.fn(), userId: 12}}>
+                <HomeHeader>
+                </HomeHeader>
+            </AuthContext.Provider>
+        </Router>)
+    .toJSON();
+    expect(page).toMatchSnapshot();
 })

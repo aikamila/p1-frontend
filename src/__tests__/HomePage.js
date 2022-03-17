@@ -4,7 +4,6 @@ import { AuthProvider } from '../context/AuthContext'
 import { Router } from 'react-router-dom'
 import { createMemoryHistory } from 'history'
 import userEvent from '@testing-library/user-event'
-import renderer from 'react-test-renderer'
 import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
 import { server } from '../mocks/server'
@@ -27,7 +26,21 @@ const renderHomePage = (history) => {
     )
 }
 
-test("user is able to log out - without any problems", async () => {
+const renderOnlyHomePage = () => {
+    const history = createMemoryHistory();
+    history.push("/home")
+    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
+    return render(
+    <Router history={history}>
+        <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
+        userId: 1, updateToken: null}}>
+            <HomePage />
+        </AuthContext.Provider>
+    </Router>
+    )
+}
+
+test("user is able to log out - when no problems occur", async () => {
     const history = createMemoryHistory()
     history.push("/auth")
     renderHomePage(history)
@@ -69,35 +82,9 @@ test("user is able to log out - when there is a server error", async () => {
     expect(screen.queryByText(/you were logged out/i)).not.toBeInTheDocument()
 })
 
-test("all elements are rendered", () => {
-    const history = createMemoryHistory()
-    history.push("/home")
-    const page = renderer
-    .create(
-        <AuthContext.Provider value={{authTokens: {access: 'valid-access', refresh: 'valid-refresh'}}}>
-            <Router history = {history}>
-                <App />
-            </Router>
-        </AuthContext.Provider>)
-    .toJSON();
-    expect(page).toMatchSnapshot();
-})
-
-
 test("all posts are displayed to the user", async() => {
     // posts should be displayed on the home page, after the user logs in and all data is loaded
-    const history = createMemoryHistory();
-    history.push("/home")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
-    
+    renderOnlyHomePage()
     expect(screen.getByRole("img", {name: /wait a second/i})).toBeInTheDocument()
     expect(await screen.findByText(/Is anyone creating a Java app/i)).toBeInTheDocument()
     expect(screen.getByText(/anyone interested in helping me with a django app/i)).toBeInTheDocument()
@@ -124,18 +111,8 @@ test("server error while loading posts is handled gracefully", async() => {
               ctx.status(404)
           )
         }),
-      )
-    const history = createMemoryHistory();
-    history.push("/home")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    )
+    renderOnlyHomePage()
     expect(screen.getByRole("img", {name: /wait a second/i})).toBeInTheDocument()
     expect(await screen.findByText(/We're not able to load the resources from the server/i)).toBeInTheDocument()
     expect(screen.queryByRole("img", {name: /wait a second/i})).not.toBeInTheDocument()
@@ -157,7 +134,7 @@ test("authorization error while loading posts is handled gracefully", async() =>
     
     expect(screen.getByRole("img", {name: /wait a second/i})).toBeInTheDocument()
     await waitFor(() => expect(tokenUpdate.mock.calls.length).toBe(1))
-    // updateToken will receive a 401 response as well and will log the user out + inform them
+    // updateToken will receive a 401 response as well and will log the user out + the user will be informed
 })
 
 test("each post of a logged-in user is rendered properly", () => {
@@ -183,7 +160,7 @@ test("each post of a logged-in user is rendered properly", () => {
 })
 
 test("all posts of other users are rendered properly", () => {
-    // users who are not authors shouldn't be able to update their posts
+    // users who are not authors shouldn't be able to see "Edit post" link
     const history = createMemoryHistory();
     render(
     <Router history={history}>

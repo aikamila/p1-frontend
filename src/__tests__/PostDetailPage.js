@@ -300,7 +300,6 @@ test("error while deleting a post is handled gracefully", async() => {
     expect(screen.getByRole("button", {name: /^ok$/i})).toBeInTheDocument()
     expect(screen.getByRole("dialog")).toBeInTheDocument()
     let links = screen.getAllByRole("link")
-    console.log(links[0])
     links.forEach(link => {
         expect(link).toHaveStyle("pointerEvents: none")
     })

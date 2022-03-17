@@ -1,9 +1,47 @@
-.init-verification__button {
-  border: none;
-  transition: 0.4s ease-in;
+.init-verification__background {
+  background-color: var(--background-gray);
+  min-height: 110vh;
+  margin-top: -5%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
-.init-verification__button:hover {
-  background: #ff96ad;
-  box-shadow: 0 0 5px #96d0ff, 0 0 25px #ff96ad, 0 0 50px #ff96ad,
-    0 0 200px #ff96ad;
+
+.init-verification__wrapper {
+  text-align: center;
+  max-width: 90vw;
+  font-size: 1.3em;
+  font-weight: 600;
+}
+
+.init-verification__button {
+  background-color: var(--nice-blue);
+  color: white;
+  border-radius: 3px;
+  border-color: transparent;
+  height: 50px;
+  width: 180px;
+}
+
+.init-verification__loading {
+  animation: star-swirling;
+  animation-duration: 0.8s;
+  animation-iteration-count: infinite;
+  animation-timing-function: linear;
+  animation-direction: alternate-reverse;
+}
+
+@keyframes star-swirling {
+  from {
+    font-size: 3.8em;
+    opacity: 100%;
+  }
+  50% {
+    font-size: 3.6em;
+    opacity: 80%;
+  }
+  to {
+    font-size: 3.2em;
+    opacity: 40%;
+  }
 }
