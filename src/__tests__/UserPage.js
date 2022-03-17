@@ -82,7 +82,6 @@ test("server errors occurs while fetching info about the user", async () => {
     expect(screen.queryByRole("img", {name: /loading posts/i})).not.toBeInTheDocument()
     expect(screen.queryByText(/t able to load the posts/i)).not.toBeInTheDocument()
     expect(screen.queryByText(/this user doesn't have any posts yet/)).not.toBeInTheDocument()
-
 })
 
 test("user data is already loaded and posts of the user are being loaded", async () => {
@@ -93,6 +92,7 @@ test("user data is already loaded and posts of the user are being loaded", async
     expect(screen.getByText(/User/)).toBeInTheDocument()
     expect(screen.getByText(/First/)).toBeInTheDocument()
     expect(screen.queryByRole("img", {name: /loading posts/i})).toBeInTheDocument()
+    expect(await screen.findByText(/comments/i)).toBeInTheDocument()
 })
 
 test("error while fetching posts", async () => {
