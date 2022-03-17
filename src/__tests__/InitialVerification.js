@@ -32,6 +32,7 @@ test("all elements are present on the page", async () => {
     expect(screen.getByTitle(/loading/i)).toBeInTheDocument()
     await waitFor(() => expect(screen.queryByRole("img", {name: /loading/i})).not.toBeInTheDocument(), {timeout: 5000})
     expect(screen.getByRole("button", {name: /verify my email/i}) ).toBeInTheDocument()
+    expect(screen.getByText(/Click on the button below/i)).toBeInTheDocument()
 })
 
 test("previous user logged in + verification token invalid", async () => {
@@ -43,7 +44,7 @@ test("previous user logged in + verification token invalid", async () => {
     renderInitVerificationPage(history)
     await waitFor(() => expect(screen.getByRole("button", {name: /verify my email/i})).toBeInTheDocument(), {timeout: 5000})
     userEvent.click(screen.getByRole("button", {name: /verify my email/i}))
-    // expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
+    expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
     await waitFor(() => expect(history.location.pathname).toBe('/verification/unsuccessful'))
     // checking if both verification pages display errors
     expect(screen.getByRole("alert")).toBeInTheDocument()
@@ -74,7 +75,7 @@ test("previous user logged in + server error while email verification", async ()
     renderInitVerificationPage(history)
     await waitFor(() => expect(screen.getByRole("button", {name: /verify my email/i})).toBeInTheDocument(), {timeout: 5000})
     userEvent.click(screen.getByRole("button", {name: /verify my email/i}))
-    // expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
+    expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
     await waitFor(() => expect(history.location.pathname).toBe('/verification/unsuccessful'))
     // checking if both verification pages display errors
     expect(screen.getByRole("alert")).toBeInTheDocument()
@@ -96,14 +97,14 @@ test("previous user logged in + server error while email verification", async ()
     expect(localStorage.getItem("authTokens")).toContain("new-access")
 })
 
-test("previous user not logged in + server error (invalid status) while verifying the email", async () => {
+test("previous user not logged in + server error (invalid response status) while verifying the email", async () => {
     // a situation when there is no user logged in and somebody wants to verify their email
     const history = createMemoryHistory()
     history.push("/verification/id/404") 
     renderInitVerificationPage(history)
     await waitFor(() => expect(screen.getByRole("button", {name: /verify my email/i})).toBeInTheDocument(), {timeout: 5000})
     userEvent.click(screen.getByRole("button", {name: /verify my email/i}))
-    // expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
+    expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
     await waitFor(() => expect(history.location.pathname).toBe('/verification/unsuccessful'))
     // checking if both verification pages display errors
     expect(screen.getByRole("alert")).toBeInTheDocument()
@@ -137,7 +138,7 @@ test("previous user logged in + new user verifies their email successfully", asy
     const setItemWith8MonthExpiryMock = jest.spyOn(storageUtils, "setItemwith8MonthExpiry")
     await waitFor(() => expect(screen.getByRole("button", {name: /verify my email/i})).toBeInTheDocument(), {timeout: 5000})
     userEvent.click(screen.getByRole("button", {name: /verify my email/i}))
-    // expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
+    expect(screen.getByRole("button", {name: /verify my email/i})).toBeDisabled()
     // logging out the previous user
     await waitFor(() => expect(localStorage.getItem("authTokens")).toBeNull())
     // new user got logged in, the token is now valid-access and the user has access to the home page
@@ -151,7 +152,7 @@ test("previous user logged in + new user verifies their email successfully", asy
     await waitFor(() => expect(screen.queryByText(/your email was successfully verified/i)).not.toBeInTheDocument(), {timeout:5010})  
 })
 
-test("no previous user logged in + new user logs in successfully", async () => {
+test("no previous user logged in + new user verifies their email successfully", async () => {
     // a typical situation when no one is logged in and a new user verifies their email
     const history = createMemoryHistory()
     history.push("/verification/id/valid") 

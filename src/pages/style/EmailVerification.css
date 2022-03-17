@@ -1,4 +1,5 @@
-.init-verification__background {
+.init-verification__background,
+.fail-init-ver__background {
   background-color: var(--background-gray);
   min-height: 110vh;
   margin-top: -5%;
@@ -7,7 +8,8 @@
   align-items: center;
 }
 
-.init-verification__wrapper {
+.init-verification__wrapper,
+.fail-init-ver__wrapper {
   text-align: center;
   max-width: 90vw;
   font-size: 1.3em;

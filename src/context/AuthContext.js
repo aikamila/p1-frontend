@@ -155,9 +155,9 @@ export const AuthProvider = ({children}) => {
             }
             }catch(err){
                 if(err.message === 'Invalid link'){
-                    setInitialVerificationError('The link is invalid. If you have already used it, just log into your account')
+                    setInitialVerificationError('The link is invalid. If you have already used it, just log into your account.')
                 }else(
-                    setInitialVerificationServerError('Something went wrong. Please use the link once again')
+                    setInitialVerificationServerError('Something went wrong. Please use the link once again.')
                 )
                 history.push("/verification/unsuccessful")
             }

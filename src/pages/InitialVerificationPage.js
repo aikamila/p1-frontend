@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react'
 import { useParams } from 'react-router-dom'
 import AuthContext from '../context/AuthContext'
 import { AiFillStar } from 'react-icons/ai'
-import './style/InitialVerificationPage.css'
+import './style/EmailVerification.css'
 
 const InitialVerificationPage = () => {
     let {id, token} = useParams();
@@ -29,7 +29,8 @@ const InitialVerificationPage = () => {
             <>
                 <p className='init-verification__prompt' id="verification-prompt">Thanks for registration!
                 <br/> Click on the button below. You will be redirected to the homepage :)</p>
-                <button onClick={() => verifyEmail(id, token)} className="init-verification__button" 
+                <button onClick={() => {setDisabled(true)
+                    verifyEmail(id, token)}} className="init-verification__button" 
                 aria-describedby='verification-prompt' disabled={disabled}>Verify my email</button>
             </>
             }
