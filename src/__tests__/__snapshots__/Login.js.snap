@@ -52,6 +52,7 @@ exports[`login form is rendered correctly 1`] = `
   </header>
   <main
     className="log-in-form__background"
+    role="main"
   >
     <div
       className="log-in-form__window"

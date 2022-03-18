@@ -1,30 +1,47 @@
 import React from "react";
 import { createMemoryHistory } from 'history'
-import { Router } from 'react-router-dom'
-import App from '../App'
-import { render } from '@testing-library/react'
+import { Router, Route } from 'react-router-dom'
+import { render, screen } from '@testing-library/react'
 import AuthContext from '../context/AuthContext'
-import '@testing-library/jest-dom/extend-expect'
-
-// testing all routes using auth tokens
+import PublicRoute from "../utils/PublicRoute";
 
 
-function renderPageWithAuthTokens(history) {
-    return render(
-      <AuthContext.Provider value={{authTokens: {access: 'valid-access', refresh: 'valid-refresh'}}}>
-        <Router history = {history}>
-            <App />
-        </Router>
-      </AuthContext.Provider>
-    );
-  }
+test("PublicRoute redirects logged-in users to homepage", () => {
+  const history = createMemoryHistory({ initialEntries: ["/forEveryone"] });
+  const PublicComponent = () => <p>Public!</p>
+  const Homepage = () => <p>Back to the homepage</p>
+  render(
+    <AuthContext.Provider value={{authTokens: {access: "access-token", refresh: "refresh-token"}}}>
+      <Router history={history}>
+        <PublicRoute exact path="/forEveryone">
+          <PublicComponent/>
+        </PublicRoute>
+        <Route exact path="/home" component={Homepage} />
+      </Router>
+    </AuthContext.Provider>
+  );
+  expect(screen.queryByText("Public!")).not.toBeInTheDocument();
+  expect(screen.queryByText("Back to the homepage")).toBeInTheDocument();
+  expect(history.location.pathname).toBe("/home")
+});
+
+
+// function renderPageWithAuthTokens(history) {
+//     return render(
+//       <AuthContext.Provider value={{authTokens: {access: 'valid-access', refresh: 'valid-refresh'}}}>
+//         <Router history = {history}>
+//             <App />
+//         </Router>
+//       </AuthContext.Provider>
+//     );
+//   }
   
-  test('users who are logged in CAN view the homepage', () => {
-    //   const history = createMemoryHistory();
-    //   history.push('/home')
-    //   renderPageWithAuthTokens(history)
-    //   expect(history.location.pathname).toBe('/home')
-  })
+//   test('users who are logged in CAN view the homepage', () => {
+//     //   const history = createMemoryHistory();
+//     //   history.push('/home')
+//     //   renderPageWithAuthTokens(history)
+//     //   expect(history.location.pathname).toBe('/home')
+//   })
   
 //   test('users who are logged in CANNOT view the start page', () => {
 //       const history = createMemoryHistory();

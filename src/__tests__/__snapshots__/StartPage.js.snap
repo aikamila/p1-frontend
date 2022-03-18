@@ -6,10 +6,12 @@ exports[`the start page is rendered correctly 1`] = `
 >
   <header
     className="start-header"
+    role="banner"
   >
     <nav
       aria-label="main navigation"
       className="start-header__navbar"
+      role="navigation"
     >
       <a
         className="start-header__sign-up"

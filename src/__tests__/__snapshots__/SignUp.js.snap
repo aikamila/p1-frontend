@@ -52,6 +52,7 @@ exports[`sign up form is rendered correctly 1`] = `
   </header>
   <main
     className="sign-up-form__background"
+    role="main"
   >
     <div
       className="sign-up-form__window"
