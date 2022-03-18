@@ -114,7 +114,8 @@ const PostDetails = () => {
       }
     }
     fetchPost(postId) 
-  }, [])
+  }, [postId, updateToken])
+  
   return (
     <>
       <HomeHeader disabled={disabled}/>

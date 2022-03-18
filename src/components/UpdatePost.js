@@ -48,7 +48,7 @@ const UpdatePost = () => {
     setInitLoading(false)
     }
     fetchPost()
-  }, [])
+  }, [postId, userId])
 
   const countInput = (e) => {
     setFailure(null)

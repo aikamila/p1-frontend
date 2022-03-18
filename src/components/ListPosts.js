@@ -39,7 +39,7 @@ const ListPosts = () => {
     return () => {setPosts([])
       setFetchError(false)
       setLoading(true)}
-  }, [])
+  }, [updateToken])
   return (
     <>
       <HomeHeader/>

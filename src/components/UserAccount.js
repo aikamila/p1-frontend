@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import UserInfo from './UserInfo'
 import api from '../api/PostsComments'
@@ -26,7 +26,8 @@ const UserAccount = () => {
   const [postsLoadingFailure, setPostsLoadingFailure] = useState(null)
   const [postsLoadingSuccess, setPostsLoadingSucccess] = useState(false)
 
-  const fetchPosts = async () => {
+
+  const fetchPosts = useCallback(async () => {
     setPostsLoading(true)
     try{
       const response = await api.get(`/?user__id=${id}`, {
@@ -43,7 +44,8 @@ const UserAccount = () => {
       setPostsLoadingFailure("We weren't able to load the posts. Try again later.")
     }
     setPostsLoading(false)
-  }
+  }, [id]
+)
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -73,7 +75,8 @@ const UserAccount = () => {
       }
     }
     fetchUserInfo()
-  }, [])
+  }, [id, fetchPosts])
+  
   return (
     <>
       <HomeHeader/>
