@@ -61,7 +61,7 @@ const AddPost = () => {
   return (
     <>
       <HomeHeader/>
-      <main className='post-add__background'>
+      <main className='post-add__background' role="main">
         <div className='post-add__center'>
           {success ? 
           <div className='post-add__success'>

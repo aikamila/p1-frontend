@@ -6,7 +6,7 @@ import './style/AuthForms.css'
 const Login = () => {
     let {login, loginEmail, setLoginEmail, loginPassword, setLoginPassword, loginError, setLoginError , loginButtonDisabled} = useContext(AuthContext)
     return (
-        <main className="log-in-form__background">
+        <main className="log-in-form__background" role="main">
             <div className="log-in-form__window">
                 <div className='log-in-form__el cta'>
                     <p>Welcome again!<br></br>Log in and share your creative ideas with the world!</p>

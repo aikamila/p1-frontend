@@ -96,7 +96,7 @@ const UpdatePost = () => {
   return (
     <>
       <HomeHeader/>
-      <main className='post-edit__background'>
+      <main className='post-edit__background' role="main">
         {
         initLoading ?
         <div className='post-edit__init_loading_div'>

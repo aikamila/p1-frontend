@@ -43,7 +43,7 @@ const ListPosts = () => {
   return (
     <>
       <HomeHeader/>
-      <main className='list-posts__background'>
+      <main className='list-posts__background' role="main">
         <div className='list-posts__center'>
         {loading ?
         <div className='list-posts__loading'>

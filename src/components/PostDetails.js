@@ -115,11 +115,11 @@ const PostDetails = () => {
     }
     fetchPost(postId) 
   }, [postId, updateToken])
-  
+
   return (
     <>
       <HomeHeader disabled={disabled}/>
-      <main className="post-details__background">
+      <main className="post-details__background" role="main">
       { !postDeleteSuccess ? 
         loading ? 
           <FiLoader role="img" aria-label="loading" className='post-details__init_loading_sign --spinner'></FiLoader> :

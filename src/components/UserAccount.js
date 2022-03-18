@@ -76,11 +76,11 @@ const UserAccount = () => {
     }
     fetchUserInfo()
   }, [id, fetchPosts])
-  
+
   return (
     <>
       <HomeHeader/>
-      <main className='user-account__background'>
+      <main className='user-account__background' role="main">
         <div className='user-account__window'>
         { 
           userInfoLoading ? 

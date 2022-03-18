@@ -121,7 +121,7 @@ const SignUp = () =>{
     }
 
     return (
-        <main className='sign-up-form__background'>
+        <main className='sign-up-form__background' role="main">
             <div className='sign-up-form__window'>
                 <p className="sign-up-form__cta">Sign up to find<br/>your perfect coding buddy!</p>
                 <div className='sign-up-form__el email'>
