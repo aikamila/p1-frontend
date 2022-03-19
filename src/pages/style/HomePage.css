@@ -1,8 +1,15 @@
 :root {
-    --nice-blue : rgb(54, 155, 250);
-    --background-gray : rgb(250, 250, 250);
-    --disabled-blue : rgb(157, 200, 240);
-    --fonts: "Raleway", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
+  --nice-blue: rgb(54, 155, 250);
+  --background-gray: rgb(250, 250, 250);
+  --disabled-blue: rgb(157, 200, 240);
+  --fonts: "Raleway", "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
     "Fira Sans", "Droid Sans", "Helvetica Neue", sans-serif;
 }
 
+.home-page__email_verified_notification {
+  margin: 0%;
+  text-align: center;
+  padding-bottom: 4px;
+  padding-top: 3px;
+  background-color: var(--background-gray);
+}

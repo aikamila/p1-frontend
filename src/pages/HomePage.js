@@ -12,10 +12,9 @@ import './style/HomePage.css'
 
 const HomePage = () => {
     let {initialVerificationSuccessful} = useContext(AuthContext)
-
     return (
         <>
-            {initialVerificationSuccessful && <p role="alert">Your email was successfully verified!</p>}
+            {initialVerificationSuccessful && <p role="alert" className='home-page__email_verified_notification'>Your email was successfully verified!</p>}
             <Switch>
                 <PrivateRoute path="/home/account/:id" component={UserAccount} />
                 <PrivateRoute path="/home/post/:postId/update" component={UpdatePost}/>

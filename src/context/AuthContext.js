@@ -31,7 +31,7 @@ export const AuthProvider = ({children}) => {
     const [unexpectedLogoutError, setUnexpectedLogoutError] = useState(null)
     const [initialVerificationError, setInitialVerificationError] = useState(null)
     const [initialVerificationServerError, setInitialVerificationServerError] = useState(null)
-    const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(false)
+    const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(null)
 
     const [loginButtonDisabled, setLoginButtonDisabled] = useState(false)
 
@@ -77,7 +77,8 @@ export const AuthProvider = ({children}) => {
             }
         }
         setLoginButtonDisabled(false)
-    }, [TOKENS_OBTAIN_URL, loginEmail, loginPassword, history]
+    }, 
+    [TOKENS_OBTAIN_URL, loginEmail, loginPassword, history]
     )
 
     const logout = useCallback(async () => {

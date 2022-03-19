@@ -1,10 +1,11 @@
 import React from 'react'
+import './style/SignUpSuccessful.css'
 
 const SignUpSuccessful = () => {
     return (
-        <div>
-            <p>Go check your email</p>
-        </div>
+        <main className='sign-up-success__background'>
+            <p>Thanks for signing up.<br/>We sent you an email. Click on the link to verify your account.</p>
+        </main>
     )
 }
 

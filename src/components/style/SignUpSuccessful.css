@@ -1,0 +1,14 @@
+.sign-up-success__background {
+  background-color: var(--background-gray);
+  min-height: 85vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  color: gray;
+  font-weight: 500;
+}
+
+.sign-up-success__background > p {
+  max-width: 90%;
+}
