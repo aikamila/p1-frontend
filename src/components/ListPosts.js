@@ -6,6 +6,7 @@ import './style/ListPosts.css'
 import { FiLoader } from 'react-icons/fi'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const ListPosts = () => {
@@ -70,6 +71,7 @@ const ListPosts = () => {
         }
         </div>
       </main>
+      <Footer/>
     </>
   )
 }

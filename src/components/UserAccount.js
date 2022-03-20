@@ -9,6 +9,7 @@ import ListEachPost from './ListEachPost'
 import './style/UserAccount.css'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const UserAccount = () => {
@@ -133,6 +134,7 @@ const UserAccount = () => {
         }
         </div>
       </main>
+      <Footer></Footer>
     </>
   )
 }

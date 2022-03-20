@@ -1,6 +1,6 @@
 .sign-up-success__background {
   background-color: var(--background-gray);
-  min-height: 85vh;
+  min-height: 73vh;
   display: flex;
   align-items: center;
   justify-content: center;

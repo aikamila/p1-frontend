@@ -4,7 +4,7 @@
   display: flex;
   align-items: center;
   justify-content: flex-start;
-  min-height: 70vh;
+  min-height: 80vh;
 }
 
 .user-account__window {
@@ -34,7 +34,7 @@
   font-size: 2em;
 }
 
-.user-account__loading_div{
+.user-account__loading_div {
   margin: 20% 10%;
   text-align: center;
 }

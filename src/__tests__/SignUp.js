@@ -1,15 +1,13 @@
 import React from "react";
 import Signup from "../components/SignUp"
 import { createMemoryHistory } from 'history'
-import {Router} from 'react-router-dom'
+import { Router } from 'react-router-dom'
 import App from '../App'
 import { render, screen, fireEvent, waitFor } from '@testing-library/react'
 import AuthContext, { AuthProvider } from '../context/AuthContext'
 import '@testing-library/jest-dom/extend-expect'
 import userEvent from "@testing-library/user-event";
 import renderer from 'react-test-renderer';
-
-// 100 %
 
 const renderSignUpComponentWithFakeContext = () => {
   const history = createMemoryHistory()
@@ -20,7 +18,6 @@ const renderSignUpComponentWithFakeContext = () => {
         <Signup/>
       </AuthContext.Provider>
     </Router>
-
   ))
 }
 

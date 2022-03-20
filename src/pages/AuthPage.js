@@ -6,10 +6,11 @@ import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import SignUpSuccessful from '../components/SignUpSuccessful'
 import PublicRoute from '../utils/PublicRoute'
+import Footer from '../components/Footer'
 import './style/AuthPage.css'
 
 const AuthPage = () => {
-    const { authServerError, authSignUpServerError } = useContext(AuthContext)
+    let { authServerError, authSignUpServerError } = useContext(AuthContext)
     return (
         <>
         { authServerError ?
@@ -27,6 +28,7 @@ const AuthPage = () => {
                 <PublicRoute path="/auth/signup" component={SignUp} />
                 <PublicRoute path="/auth" component={Login} />
             </Switch>
+            <Footer/>
         </>
         }
         </>

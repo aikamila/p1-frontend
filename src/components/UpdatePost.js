@@ -6,6 +6,7 @@ import AuthContext from '../context/AuthContext'
 import './style/AddEditPost.css'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const UpdatePost = () => {
@@ -133,6 +134,7 @@ const UpdatePost = () => {
         </div>
         }
       </main>
+      <Footer/>
     </>
   )
 }

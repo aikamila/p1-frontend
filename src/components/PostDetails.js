@@ -7,6 +7,7 @@ import { FiLoader } from "react-icons/fi"
 import './style/PostDetails.css'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const PostDetails = () => {
@@ -198,6 +199,7 @@ const PostDetails = () => {
         </>
       }
       </main>
+      <Footer/>
     </>
   )
 }

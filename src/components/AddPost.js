@@ -5,6 +5,7 @@ import AuthContext from '../context/AuthContext'
 import { FiLoader } from "react-icons/fi"
 import './style/AddEditPost.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const AddPost = () => {
@@ -87,6 +88,7 @@ const AddPost = () => {
           }
         </div>
       </main>
+      <Footer/>
     </>
   )
 }

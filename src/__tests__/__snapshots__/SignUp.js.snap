@@ -249,10 +249,14 @@ exports[`sign up success is rendered correctly 1`] = `
       </a>
     </nav>
   </header>
-  <div>
+  <main
+    className="sign-up-success__background"
+  >
     <p>
-      Go check your email
+      Thanks for signing up.
+      <br />
+      We sent you an email. Click on the link to verify your account.
     </p>
-  </div>
+  </main>
 </div>
 `;

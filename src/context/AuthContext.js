@@ -31,7 +31,7 @@ export const AuthProvider = ({children}) => {
     const [unexpectedLogoutError, setUnexpectedLogoutError] = useState(null)
     const [initialVerificationError, setInitialVerificationError] = useState(null)
     const [initialVerificationServerError, setInitialVerificationServerError] = useState(null)
-    const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(null)
+    const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(false)
 
     const [loginButtonDisabled, setLoginButtonDisabled] = useState(false)
 
