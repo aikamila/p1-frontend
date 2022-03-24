@@ -5,6 +5,9 @@ import * as JWTDecoding from './utils/JWTDecode'
 
 beforeAll(() => {
     server.listen()
+    Object.defineProperty(HTMLMediaElement.prototype, "muted", {
+        set: jest.fn(),
+    });
 })
 
 afterEach(() => {

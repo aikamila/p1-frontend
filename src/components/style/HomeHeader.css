@@ -14,7 +14,7 @@
   align-items: center;
 }
 
-@media screen and (min-width: 481px) {
+/* @media screen and (min-width: 481px) {
   .home-header__img1,
   .home-header__img2 {
     height: 47px;
@@ -28,7 +28,7 @@
     height: 37px;
     margin-left: 4px;
   }
-}
+} */
 
 .home-header__nav > a {
   text-decoration: none;

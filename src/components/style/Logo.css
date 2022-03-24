@@ -1,0 +1,15 @@
+@media screen and (min-width: 481px) {
+  .logo__img1,
+  .logo__img2 {
+    height: 47px;
+    margin-left: 4px;
+  }
+}
+
+@media screen and (max-width: 480px) {
+  .logo__img1,
+  .logo__img2 {
+    height: 37px;
+    margin-left: 4px;
+  }
+}

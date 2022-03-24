@@ -1,4 +1,4 @@
-.start-page {
+/* .start-page {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -36,10 +36,10 @@
 }
 /* size of the text */
 
-.start-page__section1 {
+/* .start-page__section1 {
   /* height: 90vh;
   width: 90vw; */
-  background-color: rgb(153, 218, 229);
+  /* background-color: rgb(153, 218, 229);
   opacity: 50%;
   color: black;
   margin: 5% 25% 5% 5%;
@@ -48,23 +48,22 @@
   text-align: justify;
   text-justify: inter-word;
   /* 1 rem is 16 pixels */
-}
 
-.start-page__section2 {
+
+/* .start-page__section2 { */
   /* height: 90vh;
   width: 90vw; */
-  background-color: black;
+  /* background-color: black;
   color: white;
   margin: 5% 5% 5% 15%;
   width: 70%;
   padding: 10% 5%;
   text-align: justify;
-  text-justify: inter-word;
+  text-justify: inter-word; */
   /* 1 rem is 16 pixels */
-}
 /* one thing more to the left, another to the right -- one after another */
-.start-page__sections {
+/* .start-page__sections {
   position: relative;
   height: 150vh;
   width: 100vw;
-}
+} */ 

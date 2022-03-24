@@ -10,12 +10,12 @@ exports[`sign up form is rendered correctly 1`] = `
   >
     <img
       alt="shangify brand logo"
-      className="auth-header__img1"
+      className="logo__img1"
       src="shangify_logo.png"
     />
     <img
       alt=""
-      className="auth-header__img2"
+      className="logo__img2"
       src="shangify_brand_name.png"
     />
     <nav
@@ -196,6 +196,19 @@ exports[`sign up form is rendered correctly 1`] = `
       </p>
     </div>
   </main>
+  <footer
+    className="footer__background"
+    role="contentinfo"
+  >
+    <div
+      className="footer__container"
+    >
+      <span>
+        ©Copyright 
+        2022
+      </span>
+    </div>
+  </footer>
 </div>
 `;
 
@@ -209,12 +222,12 @@ exports[`sign up success is rendered correctly 1`] = `
   >
     <img
       alt="shangify brand logo"
-      className="auth-header__img1"
+      className="logo__img1"
       src="shangify_logo.png"
     />
     <img
       alt=""
-      className="auth-header__img2"
+      className="logo__img2"
       src="shangify_brand_name.png"
     />
     <nav
@@ -258,5 +271,18 @@ exports[`sign up success is rendered correctly 1`] = `
       We sent you an email. Click on the link to verify your account.
     </p>
   </main>
+  <footer
+    className="footer__background"
+    role="contentinfo"
+  >
+    <div
+      className="footer__container"
+    >
+      <span>
+        ©Copyright 
+        2022
+      </span>
+    </div>
+  </footer>
 </div>
 `;

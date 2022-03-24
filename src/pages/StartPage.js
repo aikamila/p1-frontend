@@ -4,6 +4,7 @@ import AuthContext from '../context/AuthContext'
 import './style/StartPage.css'
 import "animate.css/animate.min.css";
 import { AnimationOnScroll } from 'react-animation-on-scroll';
+import the_best_vid from './style/images/the_best_vid.mp4'
 
 
 const StartPage = () => {
@@ -20,6 +21,10 @@ const StartPage = () => {
 
         <main className='start-page'>
             <div className='start-page__beginning'>
+            <video width="640" height="480" autoPlay muted loop>
+                <source src={the_best_vid}></source>
+                This video is incompatible with your browser.
+            </video>
             <h1>You always wanted to change the world.</h1>
             <h2>We made it possible for YOU.</h2>
             <button onClick={executeScroll}>See how it works</button>
