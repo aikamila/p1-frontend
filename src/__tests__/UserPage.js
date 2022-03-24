@@ -1,7 +1,7 @@
 import React from 'react'
 import { render, screen, waitFor } from '@testing-library/react'
 import { Router } from 'react-router-dom'
-import {createMemoryHistory} from 'history'
+import { createMemoryHistory } from 'history'
 import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
 import { server } from '../mocks/server'
@@ -92,7 +92,7 @@ test("user data is already loaded and posts of the user are being loaded", async
     expect(screen.getByText(/User/)).toBeInTheDocument()
     expect(screen.getByText(/First/)).toBeInTheDocument()
     expect(screen.queryByRole("img", {name: /loading posts/i})).toBeInTheDocument()
-    expect(await screen.findByText(/comments/i)).toBeInTheDocument()
+    expect(await screen.findByText(/comment\(s\)/i)).toBeInTheDocument()
 })
 
 test("error while fetching posts", async () => {

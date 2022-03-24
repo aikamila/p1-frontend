@@ -142,7 +142,7 @@ const SignUp = () =>{
                         }}/>
                     { signUpUsernameError ?
                     <span className="sign-up-form__error" role='alert' data-testid="signUpUsernameErr">{signUpUsernameError}</span> :
-                    <span>Only letters, numbers and . _ - Max. 30 characters</span> 
+                    <span>Only letters, numbers and . _ -. 3-30 characters.</span> 
                     }
                 </div>
                 <div className="sign-up-form__el name">

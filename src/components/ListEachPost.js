@@ -11,7 +11,7 @@ const ListEachPost = ({id, text, user, time, username, engagementRate}) => {
       <span className='list-each-post__time'>{time}</span>
       {text.length < 121 ? <p className='list-each-post__content'>{text}</p> : <p className='list-each-post__content'>{`${text.slice(0,120)}...`}</p>}
       <Link className='list-each-post__see_more' aria-label='see more about this post on another page' to={`/home/post/${id}`}>See more...</Link><br></br>
-      <span className='list-each-post__comment_count'>{engagementRate} comments</span><br></br>
+      <span className='list-each-post__comment_count'>{engagementRate} comment(s)</span><br></br>
       {userId === user && <Link className='list-each-post__update_link' aria-label='edit this post' to={`/home/post/${id}/update`}>Edit</Link>}
     </article>
   )

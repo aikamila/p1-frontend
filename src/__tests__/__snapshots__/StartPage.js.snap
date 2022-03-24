@@ -60,7 +60,7 @@ exports[`the start page is rendered correctly 1`] = `
         width="640"
       >
         <source
-          src="i_love_this_vid.mp4"
+          src="the_best_vid.mp4"
         />
         This video is incompatible with your browser.
       </video>
