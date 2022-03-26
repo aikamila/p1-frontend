@@ -526,22 +526,22 @@ test("201 response - account created", async () => {
   await waitFor(() => expect(history.location.pathname).toBe('/auth/signup/success'))
 })
 
-test("password fields' values disappear when the user changes location", async () => {
-  // it happens automatically because sign up page is another react component, but I want to make sure
-  // it always happens
-  const history = createMemoryHistory()
-  renderSignUpComponentWithNormalContext(history)
-  const password = screen.getByRole('textbox', {name: /^password/i})
-  const passwordConfirmation = screen.getByRole('textbox', {name: /confirm your password/i})
-  const crossSign = screen.getByRole("link", {name: /to the homepage/i})
-  userEvent.type(passwordConfirmation, "ValidPassword")
-  userEvent.type(password, "ValidPassword")
-  userEvent.click(crossSign)
-  const signUp = await screen.findByText(/^sign up$/i)
-  userEvent.click(signUp)
-  expect(screen.getByRole('textbox', {name: /^password/i})).toHaveValue('')
-  expect(screen.getByRole('textbox', {name: /confirm your password/i})).toHaveValue('')
-})
+// test("password fields' values disappear when the user changes location", async () => {
+//   // it happens automatically because sign up page is another react component, but I want to make sure
+//   // it happens at all times
+//   const history = createMemoryHistory()
+//   renderSignUpComponentWithNormalContext(history)
+//   const password = screen.getByRole('textbox', {name: /^password/i})
+//   const passwordConfirmation = screen.getByRole('textbox', {name: /confirm your password/i})
+//   const crossSign = screen.getByRole("link", {name: /to the homepage/i})
+//   userEvent.type(passwordConfirmation, "ValidPassword")
+//   userEvent.type(password, "ValidPassword")
+//   userEvent.click(crossSign)
+//   const signUp = await screen.findByText(/^sign up$/i)
+//   userEvent.click(signUp)
+//   expect(screen.getByRole('textbox', {name: /^password/i})).toHaveValue('')
+//   expect(screen.getByRole('textbox', {name: /confirm your password/i})).toHaveValue('')
+// })
 
 
 test("sign up form is rendered correctly", () => {
@@ -549,11 +549,11 @@ test("sign up form is rendered correctly", () => {
   history.push('/auth/signup')
   const page = renderer
     .create(    
-    <Router history={history}>
-    <AuthProvider>
-      <App/>
-    </AuthProvider>
-    </Router>)
+      <Router history={history}>
+      <AuthProvider>
+        <App/>
+      </AuthProvider>
+      </Router>)
     .toJSON();
   expect(page).toMatchSnapshot();
 })
@@ -563,11 +563,11 @@ test("sign up success is rendered correctly", () => {
   history.push('/auth/signup/success')
   const page = renderer
     .create(    
-    <Router history={history}>
-    <AuthProvider>
-      <App/>
-    </AuthProvider>
-    </Router>)
+      <Router history={history}>
+      <AuthProvider>
+        <App/>
+      </AuthProvider>
+      </Router>)
     .toJSON();
   expect(page).toMatchSnapshot();
 })

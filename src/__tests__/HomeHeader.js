@@ -41,7 +41,7 @@ test("all elements of the header are fully accessible", () => {
     expect(screen.getByRole("img", {name:/shangify brand logo/i})).toBeInTheDocument()
 })
 
-test("all controls are disabled", () => {
+test("all links are 'disabled' ", () => {
     renderHomeHeader(true);
     const logoutButton = screen.getByRole("button", {name: /log out/i})
     expect(logoutButton).toBeDisabled()

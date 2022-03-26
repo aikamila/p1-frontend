@@ -50,10 +50,9 @@ const renderBio = (userId, bio) => {
             userId: userId}}>
                 <Bio
                 id = {13}
-                bio = {bio}
-                >
+                bio = {bio}>
                 </Bio>
-            </AuthContext.Provider>
+        </AuthContext.Provider>
     )
 }
 
@@ -66,12 +65,12 @@ test("given user doesn't exist", async () => {
     expect(screen.queryByRole("img", {name: /loading posts/i})).not.toBeInTheDocument()
 }) 
 
-test("server errors occurs while fetching info about the user", async () => {
+test("server error occurs while fetching info about the user", async () => {
     server.use(
         rest.get('https://arcane-spire-03245.herokuapp.com/api/user/1/', (req, res, ctx) => {
             return res.once(
                 ctx.status(401)
-                )
+            )
         })
     )
     renderUserPage('/home/account/1', 2)

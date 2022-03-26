@@ -6,7 +6,6 @@ import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
 import { server } from '../mocks/server'
 import { rest } from 'msw'
-import { toHaveStyle } from '@testing-library/jest-dom/dist/matchers'
 
 
 const renderPostDetailPage = (history, userId) => {
@@ -57,9 +56,11 @@ const mock_api_data = {
                 },
                 "text": "Look at the docs ;) There are so many examples there.",
                 "time_since_posted": "1 minute ago"
-            }]
+                }
+            ]
         }
-    ]}
+    ]
+}
 
 test("post is displayed to the author in a proper way", async () => {
     const history = createMemoryHistory()
@@ -254,7 +255,7 @@ test("deleting a post at the detail page is handled properly", async () => {
     expect(screen.queryByTestId("before-delete-success")).not.toBeInTheDocument()
 })
 
-test("user wants to delete a post but exits a dialog window", async () => {
+test("user wants to delete a post but exits the dialog window", async () => {
     const history = createMemoryHistory()
     history.push('/home/post/1')
     renderPostDetailPage(history, 1)
@@ -349,7 +350,6 @@ test("input fields work correctly", async () => {
     userEvent.type(screen.getByPlaceholderText(/add a comment/i), "{backspace}")
     expect(screen.queryByText(/your comment can't be longer than/i)).not.toBeInTheDocument()
     expect(screen.queryByRole("alert")).not.toBeInTheDocument()
-
     const replyInput = screen.getAllByPlaceholderText(/add a reply/i)[0]
     userEvent.type(replyInput, "a")
     expect(replyInput).toHaveValue("a")
@@ -452,6 +452,7 @@ test("user adds an empty comment", async () => {
     expect(screen.queryByRole("alert")).not.toBeInTheDocument()
     expect(screen.queryByText(/You can't add an empty comment/i)).not.toBeInTheDocument()
 })
+
 test("a server error occurs when the user adds a comment", async () => {
     const history = createMemoryHistory()
     history.push('/home/post/1')
@@ -521,8 +522,8 @@ test("user adds an invalid reply", async () => {
             if (req.headers._headers.authorization === "Bearer valid-access"){
                 return res.once(
                 ctx.status(200),
-                ctx.json(mock_api_data
-                ))
+                ctx.json(mock_api_data)
+                )
             }
         })
     )
@@ -559,8 +560,8 @@ test("user adds an empty reply", async () => {
             if (req.headers._headers.authorization === "Bearer valid-access"){
                 return res.once(
                 ctx.status(200),
-                ctx.json(mock_api_data
-                ))
+                ctx.json(mock_api_data)
+                )
             }
         })
     )
@@ -596,8 +597,8 @@ test("a server error occurs when the user adds a reply", async () => {
             if (req.headers._headers.authorization === "Bearer valid-access"){
                 return res.once(
                 ctx.status(200),
-                ctx.json(mock_api_data
-                ))
+                ctx.json(mock_api_data)
+                )
             }
         })
     )

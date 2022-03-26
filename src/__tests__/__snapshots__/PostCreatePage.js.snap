@@ -1,0 +1,191 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`add post form is rendered correctly 1`] = `
+Array [
+  <header
+    className="home-header__background"
+    role="banner"
+  >
+    <div>
+      <img
+        alt="shangify brand logo"
+        className="logo__img1"
+        src="shangify_logo.png"
+      />
+      <img
+        alt=""
+        className="logo__img2"
+        src="shangify_brand_name.png"
+      />
+    </div>
+    <nav
+      aria-label="main navigation"
+      className="home-header__nav"
+      role="navigation"
+    >
+      <a
+        aria-label="add a post"
+        href="/home/post/add"
+        onClick={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+          }
+        }
+        title="Add a post"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M13 7h-2v4H7v2h4v4h2v-4h4v-2h-4z"
+          />
+          <path
+            d="M12 2C6.486 2 2 6.486 2 12s4.486 10 10 10 10-4.486 10-10S17.514 2 12 2zm0 18c-4.411 0-8-3.589-8-8s3.589-8 8-8 8 3.589 8 8-3.589 8-8 8z"
+          />
+        </svg>
+      </a>
+      <a
+        aria-label="homepage"
+        href="/home"
+        onClick={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+          }
+        }
+        title="Homepage"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 24 24"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M5 22h14a2 2 0 0 0 2-2v-9a1 1 0 0 0-.29-.71l-8-8a1 1 0 0 0-1.41 0l-8 8A1 1 0 0 0 3 11v9a2 2 0 0 0 2 2zm5-2v-5h4v5zm-5-8.59 7-7 7 7V20h-3v-5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v5H5z"
+          />
+        </svg>
+      </a>
+      <a
+        aria-label="my account"
+        href="/home/account/3"
+        onClick={[Function]}
+        style={
+          Object {
+            "pointerEvents": "auto",
+          }
+        }
+        title="My account"
+      >
+        <svg
+          fill="currentColor"
+          height="1em"
+          stroke="currentColor"
+          strokeWidth="0"
+          style={
+            Object {
+              "color": undefined,
+            }
+          }
+          viewBox="0 0 16 16"
+          width="1em"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            d="M3 14s-1 0-1-1 1-4 6-4 6 3 6 4-1 1-1 1H3zm5-6a3 3 0 1 0 0-6 3 3 0 0 0 0 6z"
+          />
+        </svg>
+      </a>
+      <button
+        disabled={false}
+      >
+        Log out
+      </button>
+    </nav>
+  </header>,
+  <main
+    className="post-add__background"
+    role="main"
+  >
+    <div
+      className="post-add__center"
+    >
+      <h1
+        className="post-add__title"
+      >
+        Add a public post
+      </h1>
+      <p
+        className="post-add__description"
+        id="post-description"
+      >
+        Remember to include a full description of your offer and your requirements.
+      </p>
+      <div
+        className="post-add__content_input_wrapper"
+      >
+        <textarea
+          aria-describedby="post-description"
+          aria-label="your post"
+          className="post-add__content_input"
+          onChange={[Function]}
+          placeholder="Share your idea with the world..."
+          value=""
+        />
+      </div>
+      <span
+        className="post-add__input_counter"
+      >
+        0
+        /30
+      </span>
+      <br />
+      
+      <button
+        aria-label="Add your post"
+        className="post-add__add_button"
+        disabled={true}
+        onClick={[Function]}
+      >
+        Add
+      </button>
+      <div
+        className="post-add__loading_sign_div"
+      />
+    </div>
+  </main>,
+  <footer
+    className="footer__background"
+    role="contentinfo"
+  >
+    <div
+      className="footer__container"
+    >
+      <span>
+        ©Copyright 
+        2022
+      </span>
+    </div>
+  </footer>,
+]
+`;
