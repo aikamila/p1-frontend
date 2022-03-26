@@ -1,38 +1,53 @@
 .start-header {
-  color: white;
-  background-color: black;
-  height: 20vh;
-  position: -webkit-sticky;
-  /* for safari */
+  background-color: var(--background-gray);
   width: 100vw;
-  position: relative;
+  height: 80px;
 }
 
-.start-header__sign-up,
-.start-header__log-in {
-  color: white;
+
+.start-header__sign_up,
+.start-header__log_in {
+  color: black;
+  text-decoration: none;
 }
 
-.start-header__navbar {
-  position: relative;
-  display: flex;
-  flex-direction: row;
-  height: 17vh;
+.start-header__sign_up:hover,
+.start-header__log_in:hover {
+  text-decoration: underline;
 }
 
 @media screen and (max-width: 820px) {
   .start-header__navbar {
+    display: flex;
     justify-content: space-evenly;
     align-items: flex-end;
+    font-size: 1.3em;
+  }
+  .start-header__logo {
+    display: flex;
+    justify-content: center;
   }
 }
 
 @media screen and (min-width: 821px) {
-  .start-header__sign-up {
-    flex: 1 1 auto;
+  .start-header__navbar,
+  .start-header__logo {
+    display: inline;
   }
-  .start-header__log-in {
-    flex: 1 1 auto;
+  .start-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .start-header__log_in,
+  .start-header__sign_up {
+    margin: 10px;
+  }
+  .start-header__log_in {
+    margin-right: 80px;
+  }
+  .start-header__logo {
+    margin-left: 80px;
   }
   .start-header__division {
     display: none;
