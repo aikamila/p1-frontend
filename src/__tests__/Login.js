@@ -10,12 +10,11 @@ import renderer from 'react-test-renderer'
 import { server } from '../mocks/server'
 import { rest } from 'msw'
 
+jest.setTimeout(6000)
 
 afterEach(() => {
   localStorage.removeItem("authTokens")
 })
-
-jest.setTimeout(6000)
 
 function renderLoginPage(history) {
   history.push('/auth')
@@ -190,6 +189,7 @@ test("user logs in and everything works as expected", async () => {
   const submitButton = screen.getByRole('button', {name: /log in/i})
   userEvent.click(submitButton)
   await waitFor(() => expect(history.location.pathname).toBe('/home'))
+  // asserting that tokens are updated
   await waitFor(() => expect(localStorage.getItem('authTokens')).toContain("valid-access"))
   await waitFor(() => expect(localStorage.getItem('authTokens')).toContain("new-access"))
   await waitFor(() => expect(localStorage.getItem('authTokens')).toContain("new-new-access"))

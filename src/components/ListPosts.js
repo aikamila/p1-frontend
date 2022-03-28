@@ -6,6 +6,7 @@ import './style/ListPosts.css'
 import { FiLoader } from 'react-icons/fi'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const ListPosts = () => {
@@ -39,11 +40,11 @@ const ListPosts = () => {
     return () => {setPosts([])
       setFetchError(false)
       setLoading(true)}
-  }, [])
+  }, [updateToken])
   return (
     <>
       <HomeHeader/>
-      <main className='list-posts__background'>
+      <main className='list-posts__background' role="main">
         <div className='list-posts__center'>
         {loading ?
         <div className='list-posts__loading'>
@@ -70,6 +71,7 @@ const ListPosts = () => {
         }
         </div>
       </main>
+      <Footer/>
     </>
   )
 }

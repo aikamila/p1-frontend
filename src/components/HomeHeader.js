@@ -2,8 +2,9 @@ import React, { useContext } from 'react'
 import AuthContext from '../context/AuthContext'
 import { Link } from 'react-router-dom'
 import './style/HomeHeader.css'
-import shangify_logo from './style/images/shangify_logo.png'
-import shangify_brand_name from './style/images/shangify_brand_name.png'
+// import shangify_logo from './style/images/shangify_logo.png'
+// import shangify_brand_name from './style/images/shangify_brand_name.png'
+import Logo from './Logo'
 import { BiPlusCircle } from "react-icons/bi";
 import { BiHomeAlt } from "react-icons/bi";
 import { BsFillPersonFill } from "react-icons/bs"
@@ -15,8 +16,9 @@ const HomeHeader = ({disabled = false}) => {
     return (
         <header role="banner" className='home-header__background'>
             <div>
-                <img className="home-header__img1" src={shangify_logo} alt="shangify brand logo"></img>
-                <img className="home-header__img2" src={shangify_brand_name} alt=""></img>
+                <Logo/>
+                {/* <img className="home-header__img1" src={shangify_logo} alt="shangify brand logo"></img>
+                <img className="home-header__img2" src={shangify_brand_name} alt=""></img> */}
             </div>
             <nav role="navigation" aria-label='main navigation' className='home-header__nav'>
                 <Link to="/home/post/add" aria-label="add a post" title='Add a post'

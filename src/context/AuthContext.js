@@ -1,4 +1,4 @@
-import { createContext, useState, useEffect } from "react";
+import { createContext, useState, useEffect, useCallback } from "react";
 import { useHistory, useLocation } from "react-router-dom";
 import { getItemAndCheckExpiry, setItemwith8MonthExpiry } from "../utils/LocalStorage";
 import { calculateTime } from "../utils/Timing";
@@ -20,9 +20,9 @@ export const AuthProvider = ({children}) => {
     const [loginEmail, setLoginEmail] = useState('')
     const [loginPassword, setLoginPassword] = useState('')
 
-    const [pwResetEmail, setPwResetEmail] = useState('')
-    const [pwResetPassword, setPwResetPassword] = useState('')
-    const [pwResetPasswordSecond, setPwResetPasswordSecond] = useState('')
+    // const [pwResetEmail, setPwResetEmail] = useState('')
+    // const [pwResetPassword, setPwResetPassword] = useState('')
+    // const [pwResetPasswordSecond, setPwResetPasswordSecond] = useState('')
 
     const [loginError, setLoginError] = useState(null) // invalid credentials
  
@@ -41,7 +41,7 @@ export const AuthProvider = ({children}) => {
     const TOKENS_BLACKLIST_URL = BACKEND_DOMAIN + 'api/user/token/blacklist/'
     const INITIAL_EMAIL_VERIFICATION = BACKEND_DOMAIN + 'api/user/token/verification/'
 
-    const login = async (e) => {
+    const login = useCallback(async (e) => {
         e.preventDefault();
         setLoginButtonDisabled(true)
         try{
@@ -77,11 +77,13 @@ export const AuthProvider = ({children}) => {
             }
         }
         setLoginButtonDisabled(false)
-    }
+    }, 
+    [TOKENS_OBTAIN_URL, loginEmail, loginPassword, history]
+    )
 
-    const logout = async () => {
+    const logout = useCallback(async () => {
         try{
-            const response = await fetch(TOKENS_BLACKLIST_URL,{
+            await fetch(TOKENS_BLACKLIST_URL,{
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json'
@@ -97,9 +99,9 @@ export const AuthProvider = ({children}) => {
         setAuthTokens(null)
         setUserId(null)
         history.push('/')
-    }
+    }, [TOKENS_BLACKLIST_URL])
 
-    const updateToken = async () => {
+    const updateToken = useCallback(async () => {
         try{
             const tokens = getItemAndCheckExpiry('authTokens')
             // we get them from the local storage bc when the user comes back, they don't have the hook set (so we would send null :( )
@@ -125,7 +127,8 @@ export const AuthProvider = ({children}) => {
                 setUnexpectedLogoutError(null)
             }, 5000)
         }
-    }
+    }, [TOKENS_REFRESH_URL, logout]
+    )
 
     const verifyEmail = async (id, token) => {
         try{
@@ -172,7 +175,7 @@ export const AuthProvider = ({children}) => {
             }
         }, fourMinutes)
         return () => clearInterval(interval)
-    }, [authTokens])
+    }, [authTokens, updateToken])
 
     useEffect(() => {
         const updateTokenAtTheBeginning = async () => {
@@ -182,7 +185,7 @@ export const AuthProvider = ({children}) => {
             }
         }   
         updateTokenAtTheBeginning()
-    }, [])
+    }, [updateToken])
 
     useEffect(() => {
         setLoginPassword('')

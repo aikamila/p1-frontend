@@ -68,7 +68,7 @@ const Comment = ({commentId, author, text, timeSincePosted, comment, disabled}) 
           </Reply>)}
         </section>
         {replySubmitError && <span role="alert" className='post-details__input_err'>{replySubmitError}</span>}
-        { replyTooLong && <span role="alert" className='post-details__input_err'>Your reply can't be longer than 5000 characters.</span>}
+        {replyTooLong && <span role="alert" className='post-details__input_err'>Your reply can't be longer than 5000 characters.</span>}
         <div className='post-details__input_el'>
           <textarea data-testid={`input-comment-${commentId}`} value={reply} onChange={(e) => countReply(e)} placeholder='Add a reply...'
           aria-label={`add a reply to the comment: ${text.slice(0,120)}`} className="post-details__input"/>

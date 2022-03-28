@@ -3,68 +3,87 @@
   flex-direction: column;
   align-items: center;
   width: 100vw;
-  background-image: linear-gradient(
-    rgb(248, 217, 230),
-    rgb(233, 238, 255),
-    rgb(255, 233, 240)
-  );
 }
 
 .start-page__beginning {
-  height: 100vh;
+  height: 720px;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+@media screen and (max-width: 820px) {
+  .start-page__video {
+    display: none;
+  }
+}
+
+@media screen and (min-width: 821px) {
+  .start-page__video {
+  }
+  .start-page__title {
+    /* color: rebeccapurple; */
+    font-size: 1.1em;
+    margin-right: 80px;
+  }
+}
+
+.start-page__title {
+  margin-bottom: 80px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  text-align: center;
-  justify-content: center;
 }
 
-.start-page__beginning > button {
-  width: 80vmin;
-  height: 8vh;
+.start-page__title > button {
+  width: 80%;
+  height: 50px;
+  margin-top: 7px;
   border: none;
-  background-color: rgb(248, 217, 230);
+  background-color: #fac3da;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 400;
   transition: 0.4s ease-in;
   display: flex;
   align-items: center;
   justify-content: center;
 }
-.start-page__beginning > button:hover {
+
+.start-page__title > button:hover {
   background-color: #fac3da;
   box-shadow: 0 0 5px #fac3da, 0 0 25px #fac3da, 0 0 50px #fac3da,
     0 0 200px #fac3da;
 }
-/* size of the text */
 
-.start-page__section1 {
-  /* height: 90vh;
-  width: 90vw; */
-  background-color: rgb(153, 218, 229);
-  opacity: 50%;
-  color: black;
-  margin: 5% 25% 5% 5%;
-  width: 70%;
-  padding: 10% 5%;
-  text-align: justify;
-  text-justify: inter-word;
-  /* 1 rem is 16 pixels */
-}
-
-.start-page__section2 {
-  /* height: 90vh;
-  width: 90vw; */
-  background-color: black;
-  color: white;
-  margin: 5% 5% 5% 15%;
-  width: 70%;
-  padding: 10% 5%;
-  text-align: justify;
-  text-justify: inter-word;
-  /* 1 rem is 16 pixels */
-}
-/* one thing more to the left, another to the right -- one after another */
 .start-page__sections {
   position: relative;
-  height: 150vh;
   width: 100vw;
+  background-color: var(--background-gray);
+}
+
+.start-page__sections > div {
+  /* styling divs created by Animation on Scroll */
+  margin-bottom: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.start-page__sections > :first-child {
+  margin-top: 100px;
+}
+
+.start-page__section {
+  width: 1000px;
+  max-width: 80vw;
+  padding: 10% 5%;
+  border-radius: 8px;
+  background-color: black;
+  color: white;
+  text-align: justify;
+  text-justify: inter-word;
+  line-height: 1.6;
 }

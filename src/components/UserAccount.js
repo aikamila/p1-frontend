@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import React, { useContext, useEffect, useState, useCallback } from 'react'
 import { useParams } from 'react-router-dom'
 import UserInfo from './UserInfo'
 import api from '../api/PostsComments'
@@ -9,6 +9,7 @@ import ListEachPost from './ListEachPost'
 import './style/UserAccount.css'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const UserAccount = () => {
@@ -26,7 +27,8 @@ const UserAccount = () => {
   const [postsLoadingFailure, setPostsLoadingFailure] = useState(null)
   const [postsLoadingSuccess, setPostsLoadingSucccess] = useState(false)
 
-  const fetchPosts = async () => {
+
+  const fetchPosts = useCallback(async () => {
     setPostsLoading(true)
     try{
       const response = await api.get(`/?user__id=${id}`, {
@@ -43,7 +45,8 @@ const UserAccount = () => {
       setPostsLoadingFailure("We weren't able to load the posts. Try again later.")
     }
     setPostsLoading(false)
-  }
+  }, [id]
+)
 
   useEffect(() => {
     const fetchUserInfo = async () => {
@@ -73,11 +76,12 @@ const UserAccount = () => {
       }
     }
     fetchUserInfo()
-  }, [])
+  }, [id, fetchPosts])
+
   return (
     <>
       <HomeHeader/>
-      <main className='user-account__background'>
+      <main className='user-account__background' role="main">
         <div className='user-account__window'>
         { 
           userInfoLoading ? 
@@ -130,6 +134,7 @@ const UserAccount = () => {
         }
         </div>
       </main>
+      <Footer></Footer>
     </>
   )
 }

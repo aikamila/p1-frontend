@@ -1,0 +1,12 @@
+.footer__background {
+  background-color: var(--background-gray);
+  min-height: 20vh;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.footer__container {
+  margin-bottom: 45px;
+  color: darkgray;
+}

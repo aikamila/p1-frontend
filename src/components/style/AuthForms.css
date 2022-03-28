@@ -6,7 +6,7 @@
 .sign-up-form__background,
 .log-in-form__background {
   background-color: var(--background-gray);
-  min-height: 85vh;
+  min-height: 73vh;
   display: flex;
   align-items: flex-start;
   justify-content: center;

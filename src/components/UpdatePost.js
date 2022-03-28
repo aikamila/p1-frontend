@@ -6,6 +6,7 @@ import AuthContext from '../context/AuthContext'
 import './style/AddEditPost.css'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const UpdatePost = () => {
@@ -48,7 +49,7 @@ const UpdatePost = () => {
     setInitLoading(false)
     }
     fetchPost()
-  }, [])
+  }, [postId, userId])
 
   const countInput = (e) => {
     setFailure(null)
@@ -96,7 +97,7 @@ const UpdatePost = () => {
   return (
     <>
       <HomeHeader/>
-      <main className='post-edit__background'>
+      <main className='post-edit__background' role="main">
         {
         initLoading ?
         <div className='post-edit__init_loading_div'>
@@ -133,6 +134,7 @@ const UpdatePost = () => {
         </div>
         }
       </main>
+      <Footer/>
     </>
   )
 }

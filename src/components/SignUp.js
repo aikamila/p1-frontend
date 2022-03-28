@@ -1,4 +1,4 @@
-import React, { useContext, useState } from 'react'
+import React, { useContext, useState, useRef } from 'react'
 import AuthContext from '../context/AuthContext'
 import { useHistory, Link } from 'react-router-dom'
 import './style/AuthForms.css'
@@ -12,6 +12,8 @@ const SignUp = () =>{
     const USER_CREATION_URL = BACKEND_DOMAIN + 'api/user/registration/'
 
     const history = useHistory()
+
+    const submitButtonMounted = useRef(true)
 
     const [signUpEmail, setSignUpEmail] = useState('')
     const [signUpPassword, setSignUpPassword] = useState('')
@@ -66,6 +68,7 @@ const SignUp = () =>{
                     // to make sure that it doesn't stay here 
                     setSignUpPasswordConfirmation('')
                     setSignUpPassword('')
+                    submitButtonMounted.current = false
                     history.push('/auth/signup/success')
                 }else if(response.status === 400){
                     throw Error('Invalid data was sent');
@@ -99,10 +102,13 @@ const SignUp = () =>{
                     }
                 }else{
                     setAuthSignUpServerError('Upps... unexpected problem with the server occured. Try to refresh the site and create an account once again :)')
+                    submitButtonMounted.current = false
                 }
             }
         }
-        setDisabled(false)
+        if(submitButtonMounted.current){
+            setDisabled(false)
+        }
     }
 
     const bioCharCount= (e) => {
@@ -115,7 +121,7 @@ const SignUp = () =>{
     }
 
     return (
-        <main className='sign-up-form__background'>
+        <main className='sign-up-form__background' role="main">
             <div className='sign-up-form__window'>
                 <p className="sign-up-form__cta">Sign up to find<br/>your perfect coding buddy!</p>
                 <div className='sign-up-form__el email'>
@@ -136,7 +142,7 @@ const SignUp = () =>{
                         }}/>
                     { signUpUsernameError ?
                     <span className="sign-up-form__error" role='alert' data-testid="signUpUsernameErr">{signUpUsernameError}</span> :
-                    <span>Only letters, numbers and . _ - Max. 30 characters</span> 
+                    <span>Only letters, numbers and . _ -. 3-30 characters.</span> 
                     }
                 </div>
                 <div className="sign-up-form__el name">

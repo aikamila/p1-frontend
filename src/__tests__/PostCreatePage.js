@@ -7,40 +7,34 @@ import AuthContext from '../context/AuthContext'
 import HomePage from '../pages/HomePage'
 import { server } from '../mocks/server'
 import { rest } from 'msw'
+import renderer from 'react-test-renderer'
+import AddPost from '../components/AddPost'
 
-test("all elements are initially rendered", () => {
+const renderAddPostPage = () => {
     const history = createMemoryHistory();
     history.push("/home/post/add")
     const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    return render(
+    <Router history={history}>
+        <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
+        userId: 1, updateToken: null}}>
+            <HomePage />
+        </AuthContext.Provider>
+    </Router>)
+}
+
+test("all elements are initially rendered", () => {
+    renderAddPostPage()
     expect(screen.getByRole("textbox", {name:/your post/i})).toBeInTheDocument()
     expect(screen.getByPlaceholderText(/share your idea with the world/i)).toBeInTheDocument()
     expect(screen.getByRole("button", {name: /post/i})).toBeInTheDocument()
     expect(screen.getByRole("button", {name: /post/i})).toBeDisabled()
     expect(screen.getByText("0/30")).toBeInTheDocument()
-
 })
 
 test("submit button gets enabled after the user types minimmum 30 characters (without whitespaces at the end and at the beginning)", () => {
     // testing the minimum word counter at the same time
-    const history = createMemoryHistory();
-    history.push("/home/post/add")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderAddPostPage()
     const textbox = screen.getByRole("textbox")
     userEvent.type(textbox, " ")
     expect(screen.getByRole("button", {name: /post/i})).toBeDisabled()
@@ -57,17 +51,7 @@ test("submit button gets enabled after the user types minimmum 30 characters (wi
 })
 
 test("maximum lenght of input is 5000", () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/add")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderAddPostPage()
     const textbox = screen.getByRole("textbox")
     fireEvent.change(textbox, {target: {value: "a".repeat(4999)}})
     expect(screen.queryByText(/post is too long/i)).not.toBeInTheDocument()
@@ -85,17 +69,7 @@ test("maximum lenght of input is 5000", () => {
 })
 
 test("post successfully created", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/add")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderAddPostPage()
     const textbox = screen.getByRole("textbox")
     userEvent.type(textbox, "My new post my new post my new post my new post")
     userEvent.click(screen.getByRole("button", {name: /post/i}))
@@ -110,34 +84,24 @@ test("post successfully created", async () => {
 })
 
 test("post isn't created because server responds wth 400", async () => {
-    const history = createMemoryHistory();
-      history.push("/home/post/add")
-      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-          render(
-          <Router history={history}>
-              <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-              userId: 1, updateToken: null}}>
-                  <HomePage />
-              </AuthContext.Provider>
-          </Router>
-          )
-      const textbox = screen.getByRole("textbox")
-      userEvent.type(textbox, "Some invalid post some invalid post some invalid post")
-      userEvent.click(screen.getByRole("button", {name: /post/i}))
-      expect(screen.getByRole("button", {name: /post/i})).toBeDisabled()
-      expect(screen.getByRole("img", {name: /loading/i})).toBeInTheDocument()
-      expect(await screen.findByText(/seems to be invalid/i)).toBeInTheDocument()
-      expect(screen.getByRole("alert")).toBeInTheDocument()
-      expect(screen.queryByRole("link", {name: / go to the homepage/i})).not.toBeInTheDocument()
-      expect(screen.queryByRole("link", {name: /your posts/i})).not.toBeInTheDocument()
-      expect(screen.queryByRole("img", {name: /loading/i})).not.toBeInTheDocument()
-      expect(screen.queryByRole("textbox")).toBeInTheDocument()
-      expect(screen.queryByRole("textbox")).toHaveValue("Some invalid post some invalid post some invalid post")
-      expect(screen.queryByRole("button", {name: /post/i})).toBeInTheDocument()
-      expect(screen.queryByRole("button", {name: /post/i})).not.toBeDisabled()
-      userEvent.type(textbox, "a")
-      expect(screen.queryByText(/seems to be invalid/i)).not.toBeInTheDocument()
-      expect(screen.queryByRole("alert")).not.toBeInTheDocument()
+    renderAddPostPage()
+    const textbox = screen.getByRole("textbox")
+    userEvent.type(textbox, "Some invalid post some invalid post some invalid post")
+    userEvent.click(screen.getByRole("button", {name: /post/i}))
+    expect(screen.getByRole("button", {name: /post/i})).toBeDisabled()
+    expect(screen.getByRole("img", {name: /loading/i})).toBeInTheDocument()
+    expect(await screen.findByText(/seems to be invalid/i)).toBeInTheDocument()
+    expect(screen.getByRole("alert")).toBeInTheDocument()
+    expect(screen.queryByRole("link", {name: / go to the homepage/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole("link", {name: /your posts/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole("img", {name: /loading/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole("textbox")).toBeInTheDocument()
+    expect(screen.queryByRole("textbox")).toHaveValue("Some invalid post some invalid post some invalid post")
+    expect(screen.queryByRole("button", {name: /post/i})).toBeInTheDocument()
+    expect(screen.queryByRole("button", {name: /post/i})).not.toBeDisabled()
+    userEvent.type(textbox, "a")
+    expect(screen.queryByText(/seems to be invalid/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument()
 })
 
 test("post isn't created beacuse server sends an invalid response", async () => {
@@ -147,59 +111,38 @@ test("post isn't created beacuse server sends an invalid response", async () => 
               ctx.status(401)
           )
         }),
-      )
-      const history = createMemoryHistory();
-      history.push("/home/post/add")
-      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-          render(
-          <Router history={history}>
-              <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-              userId: 1, updateToken: null}}>
-                  <HomePage />
-              </AuthContext.Provider>
-          </Router>
-          )
-      const textbox = screen.getByRole("textbox")
-      userEvent.type(textbox, "My new post my new post my new post my new post")
-      userEvent.click(screen.getByRole("button", {name: /post/i}))
-      expect(screen.getByRole("button", {name: /post/i})).toBeDisabled()
-      expect(screen.getByRole("img", {name: /loading/i})).toBeInTheDocument()
-      expect(await screen.findByText(/try to submit the post later/i)).toBeInTheDocument()
-      expect(screen.getByRole("alert")).toBeInTheDocument()
-      expect(screen.queryByRole("link", {name: / go to the homepage/i})).not.toBeInTheDocument()
-      expect(screen.queryByRole("link", {name: /your posts/i})).not.toBeInTheDocument()
-      expect(screen.queryByRole("img", {name: /loading/i})).not.toBeInTheDocument()
-      expect(screen.queryByRole("textbox")).toBeInTheDocument()
-      expect(screen.queryByRole("textbox")).toHaveValue("My new post my new post my new post my new post")
-      expect(screen.queryByRole("button", {name: /post/i})).toBeInTheDocument()
-      expect(screen.queryByRole("button", {name: /post/i})).not.toBeDisabled()
-      userEvent.type(textbox, "a")
-      expect(screen.queryByText(/try to submit the post later/i)).not.toBeInTheDocument()
-      expect(screen.queryByRole("alert")).not.toBeInTheDocument()
+    )
+    renderAddPostPage()
+    const textbox = screen.getByRole("textbox")
+    userEvent.type(textbox, "My new post my new post my new post my new post")
+    userEvent.click(screen.getByRole("button", {name: /post/i}))
+    expect(screen.getByRole("button", {name: /post/i})).toBeDisabled()
+    expect(screen.getByRole("img", {name: /loading/i})).toBeInTheDocument()
+    expect(await screen.findByText(/try to submit the post later/i)).toBeInTheDocument()
+    expect(screen.getByRole("alert")).toBeInTheDocument()
+    expect(screen.queryByRole("link", {name: / go to the homepage/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole("link", {name: /your posts/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole("img", {name: /loading/i})).not.toBeInTheDocument()
+    expect(screen.queryByRole("textbox")).toBeInTheDocument()
+    expect(screen.queryByRole("textbox")).toHaveValue("My new post my new post my new post my new post")
+    expect(screen.queryByRole("button", {name: /post/i})).toBeInTheDocument()
+    expect(screen.queryByRole("button", {name: /post/i})).not.toBeDisabled()
+    userEvent.type(textbox, "a")
+    expect(screen.queryByText(/try to submit the post later/i)).not.toBeInTheDocument()
+    expect(screen.queryByRole("alert")).not.toBeInTheDocument()
 })
 
 test("alert about too many characters disappears when the user submits their post", async () => {
-    // this test makes sure that once an error (e.g. about an invalid server response) is displayed,
-    // there is no alert about the number of letters (as this error shows up only when then number of 
-    // characters is still 5000 -  a valid number)
+    // asserts that the user never sees 2 errors at the same time (they can get another error
+    // while submitting the post)
     server.use(
         rest.post('https://arcane-spire-03245.herokuapp.com/api/services/posts/', (req, res, ctx) => {
           return res.once(
               ctx.status(500)
           )
         }),
-      )
-      const history = createMemoryHistory();
-      history.push("/home/post/add")
-      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-          render(
-          <Router history={history}>
-              <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-              userId: 1, updateToken: null}}>
-                  <HomePage />
-              </AuthContext.Provider>
-          </Router>
-          )
+    )
+    renderAddPostPage()
     const textbox = screen.getByRole("textbox")
     fireEvent.change(textbox, {target: {value: "a".repeat(4999)}})
     userEvent.type(textbox, "aa")
@@ -209,3 +152,18 @@ test("alert about too many characters disappears when the user submits their pos
     expect(await screen.findByText(/try to submit the post later/i)).toBeInTheDocument()
     expect(screen.getAllByRole('alert')).toHaveLength(1)
 })
+
+test("add post form is rendered correctly", () => {
+    const history = createMemoryHistory();
+    history.push("/auth")
+    const page = renderer
+      .create(
+        <Router history = {history}>
+          <AuthContext.Provider value={{userId: 3, authTokens: {access: 'valid-token', refresh: 'refresh-token'}}}>
+            <AddPost />
+          </AuthContext.Provider>
+        </Router>
+      )
+      .toJSON()
+      expect(page).toMatchSnapshot()
+  })

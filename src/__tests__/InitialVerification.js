@@ -8,10 +8,8 @@ import userEvent from '@testing-library/user-event'
 
 jest.setTimeout(9000)
 
-
 afterEach(() => {
     localStorage.removeItem("authTokens")
-    // this must be done !!!
 })
 
 const renderInitVerificationPage = (history) => {

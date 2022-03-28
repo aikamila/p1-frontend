@@ -8,29 +8,31 @@ import HomePage from '../pages/HomePage'
 import { server } from '../mocks/server'
 import { rest } from 'msw'
 
+const renderUpdatePostPage = (userId) => {
+    const history = createMemoryHistory();
+      history.push("/home/post/10/update")
+      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
+        return render(
+        <Router history={history}>
+            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
+            userId: userId, updateToken: null}}>
+                <HomePage />
+            </AuthContext.Provider>
+        </Router>)
+}
+
 test("given post doesn't exist", async () => {
     server.use(
         rest.get('https://arcane-spire-03245.herokuapp.com/api/services/posts/10/basic/', (req, res, ctx) => {
-          return res.once(
-              ctx.status(404),
-              ctx.json({
-                  message: "This post doesn't exist"
-              })
-          )
+            return res.once(
+                ctx.status(404),
+                ctx.json({
+                    message: "This post doesn't exist"
+                })
+            )
         }),
-      )
-      const history = createMemoryHistory();
-      history.push("/home/post/10/update")
-      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-          render(
-          <Router history={history}>
-              <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-              userId: 7, updateToken: null}}>
-                  <HomePage />
-              </AuthContext.Provider>
-          </Router>
-          )
-                
+    )
+    renderUpdatePostPage(7)    
     expect(screen.getByRole("img", {name:/loading/i})).toBeInTheDocument()
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     expect(screen.getByText(/this post doesn't exist/i)).toBeInTheDocument()
@@ -40,22 +42,12 @@ test("given post doesn't exist", async () => {
 test("handling an error while fetching initial data", async () => {
     server.use(
         rest.get('https://arcane-spire-03245.herokuapp.com/api/services/posts/10/basic/', (req, res, ctx) => {
-          return res.once(
-              ctx.status(500)
+            return res.once(
+                ctx.status(500)
           )
         }),
-      )
-      const history = createMemoryHistory();
-      history.push("/home/post/10/update")
-      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-          render(
-          <Router history={history}>
-              <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-              userId: 7, updateToken: null}}>
-                  <HomePage />
-              </AuthContext.Provider>
-          </Router>
-          )
+    )
+    renderUpdatePostPage(7)
     expect(screen.getByRole("img", {name:/loading/i})).toBeInTheDocument()
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     expect(screen.getByText(/something went wrong/i)).toBeInTheDocument()
@@ -63,17 +55,7 @@ test("handling an error while fetching initial data", async () => {
 })
 
 test("only the author can access the page", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 8, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderUpdatePostPage(8)
     expect(screen.getByRole("img", {name:/loading/i})).toBeInTheDocument()
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     expect(screen.getByText(/not the author of this post/i)).toBeInTheDocument()
@@ -81,17 +63,7 @@ test("only the author can access the page", async () => {
 })
 
 test("the page is rendered correctly", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 7, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderUpdatePostPage(7)
     expect(screen.getByRole("img", {name:/loading/i})).toBeInTheDocument()
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     expect(screen.getByRole("textbox", {name:/your edited post/i})).toBeInTheDocument()
@@ -103,17 +75,7 @@ test("the page is rendered correctly", async () => {
 })
 
 test("submit button is enabled only when the input consists of 30 characters (without whitespaces at the beginning and the end)", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 7, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderUpdatePostPage(7)
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     const input = screen.getByRole("textbox", {name:/your edited post/i})
     input.setSelectionRange(20, 33)
@@ -129,17 +91,7 @@ test("submit button is enabled only when the input consists of 30 characters (wi
 })
 
 test("maximum length of input is 5000", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 7, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderUpdatePostPage(7)
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     const input = screen.getByRole("textbox", {name:/your edited post/i})
     fireEvent.change(input, {target: {value: "a".repeat(4999)}})
@@ -157,17 +109,7 @@ test("maximum length of input is 5000", async () => {
 })
 
 test("post is updated successfully", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 7, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderUpdatePostPage(7)
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     const textbox = screen.getByRole("textbox")
     textbox.setSelectionRange(0,33)
@@ -184,17 +126,7 @@ test("post is updated successfully", async () => {
 })
 
 test("post isn't updated because the server responds with 400", async () => {
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 7, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    renderUpdatePostPage(7)
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     const textbox = screen.getByRole("textbox")
     textbox.setSelectionRange(0,33)
@@ -218,22 +150,12 @@ test("post isn't updated because the server responds with 400", async () => {
 test("post isn't updated beacause the server sends an invalid response", async () => {
     server.use(
         rest.put('https://arcane-spire-03245.herokuapp.com/api/services/posts/10/', (req, res, ctx) => {
-          return res.once(
-              ctx.status(405)
-          )
+            return res.once(
+                ctx.status(405)
+            )
         }),
-      )
-    const history = createMemoryHistory();
-    history.push("/home/post/10/update")
-    const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-        render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 7, updateToken: null}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
+    )
+    renderUpdatePostPage(7)
     await waitFor(() => expect(screen.queryByRole("img", {name:/loading/i})).not.toBeInTheDocument())
     const textbox = screen.getByRole("textbox")
     userEvent.type(textbox, "Now my post is updated. I'm so happy about this :)))))) Yeah!")
@@ -254,27 +176,16 @@ test("post isn't updated beacause the server sends an invalid response", async (
 })
 
 test("alert about too many characters disappears when the user saves their post", async () => {
-    // this test makes sure that once an error (e.g. about an invalid server response) is displayed,
-    // there is no alert about the number of letters (as this error shows up only when then number of 
-    // characters is still 5000 - a valid number)
+    // asserts that the user never sees 2 errors at the same time (they can get another error
+    // while saving the post)
     server.use(
         rest.put('https://arcane-spire-03245.herokuapp.com/api/services/posts/10/', (req, res, ctx) => {
-          return res.once(
-              ctx.status(401)
-          )
+            return res.once(
+                ctx.status(401)
+            )
         }),
-      )
-      const history = createMemoryHistory();
-      history.push("/home/post/10/update")
-      const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
-          render(
-          <Router history={history}>
-              <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-              userId: 7, updateToken: null}}>
-                  <HomePage />
-              </AuthContext.Provider>
-          </Router>
-          )
+    )
+    renderUpdatePostPage(7)
     const textbox = await screen.findByRole("textbox")
     fireEvent.change(textbox, {target: {value: "a".repeat(4999)}})
     userEvent.type(textbox, "aa")

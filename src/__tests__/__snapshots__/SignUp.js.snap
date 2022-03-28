@@ -10,12 +10,12 @@ exports[`sign up form is rendered correctly 1`] = `
   >
     <img
       alt="shangify brand logo"
-      className="auth-header__img1"
+      className="logo__img1"
       src="shangify_logo.png"
     />
     <img
       alt=""
-      className="auth-header__img2"
+      className="logo__img2"
       src="shangify_brand_name.png"
     />
     <nav
@@ -52,6 +52,7 @@ exports[`sign up form is rendered correctly 1`] = `
   </header>
   <main
     className="sign-up-form__background"
+    role="main"
   >
     <div
       className="sign-up-form__window"
@@ -92,7 +93,7 @@ exports[`sign up form is rendered correctly 1`] = `
           value=""
         />
         <span>
-          Only letters, numbers and . _ - Max. 30 characters
+          Only letters, numbers and . _ -. 3-30 characters.
         </span>
       </div>
       <div
@@ -195,6 +196,19 @@ exports[`sign up form is rendered correctly 1`] = `
       </p>
     </div>
   </main>
+  <footer
+    className="footer__background"
+    role="contentinfo"
+  >
+    <div
+      className="footer__container"
+    >
+      <span>
+        ©Copyright 
+        2022
+      </span>
+    </div>
+  </footer>
 </div>
 `;
 
@@ -208,12 +222,12 @@ exports[`sign up success is rendered correctly 1`] = `
   >
     <img
       alt="shangify brand logo"
-      className="auth-header__img1"
+      className="logo__img1"
       src="shangify_logo.png"
     />
     <img
       alt=""
-      className="auth-header__img2"
+      className="logo__img2"
       src="shangify_brand_name.png"
     />
     <nav
@@ -248,10 +262,27 @@ exports[`sign up success is rendered correctly 1`] = `
       </a>
     </nav>
   </header>
-  <div>
+  <main
+    className="sign-up-success__background"
+  >
     <p>
-      Go check your email
+      Thanks for signing up.
+      <br />
+      We sent you an email. Click on the link to verify your account.
     </p>
-  </div>
+  </main>
+  <footer
+    className="footer__background"
+    role="contentinfo"
+  >
+    <div
+      className="footer__container"
+    >
+      <span>
+        ©Copyright 
+        2022
+      </span>
+    </div>
+  </footer>
 </div>
 `;

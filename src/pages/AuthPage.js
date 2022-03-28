@@ -1,28 +1,35 @@
 import React, { useContext } from 'react'
 import AuthContext from '../context/AuthContext'
 import AuthHeader from '../components/AuthHeader'
-import { Switch, Route } from 'react-router-dom'
+import { Switch } from 'react-router-dom'
 import Login from '../components/Login'
 import SignUp from '../components/SignUp'
 import SignUpSuccessful from '../components/SignUpSuccessful'
+import PublicRoute from '../utils/PublicRoute'
+import Footer from '../components/Footer'
+import './style/AuthPage.css'
 
 const AuthPage = () => {
     let { authServerError, authSignUpServerError } = useContext(AuthContext)
     return (
         <>
         { authServerError ?
-        <p role="alert">{authServerError}</p> :
+        <div className='auth-page__err_wrapper'>
+            <p role="alert" className='auth-page__err'>{authServerError}</p>
+        </div> :
         authSignUpServerError ?
-        <p role="alert">{authSignUpServerError}</p> :
+        <div className='auth-page__err_wrapper'>
+            <p role="alert" className='auth-page__err'>{authSignUpServerError}</p>
+        </div> :
         <>
             <AuthHeader/>
             <Switch>
-                <Route path="/auth/signup/success" component={SignUpSuccessful}/>
-                <Route path="/auth/signup" component={SignUp} />
-                <Route path="/auth" component={Login} />
+                <PublicRoute path="/auth/signup/success" component={SignUpSuccessful}/>
+                <PublicRoute path="/auth/signup" component={SignUp} />
+                <PublicRoute path="/auth" component={Login} />
             </Switch>
+            <Footer/>
         </>
-        
         }
         </>
     )

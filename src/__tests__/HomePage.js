@@ -10,11 +10,11 @@ import { server } from '../mocks/server'
 import { rest } from 'msw'
 import ListEachPost from '../components/ListEachPost'
 
+jest.setTimeout(7000)
+
 afterEach(() => {
     localStorage.removeItem("authTokens")
 })
-
-jest.setTimeout(7000)
 
 const renderHomePage = (history) => {
     return render(
@@ -31,12 +31,12 @@ const renderOnlyHomePage = () => {
     history.push("/home")
     const authTokens = {refresh: 'valid-refresh', access: 'valid-access'}
     return render(
-    <Router history={history}>
-        <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-        userId: 1, updateToken: null}}>
-            <HomePage />
-        </AuthContext.Provider>
-    </Router>
+        <Router history={history}>
+            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
+            userId: 1, updateToken: null}}>
+                <HomePage />
+            </AuthContext.Provider>
+        </Router>
     )
 }
 
@@ -96,8 +96,8 @@ test("all posts are displayed to the user", async() => {
     expect(screen.getByText('2 days ago')).toBeInTheDocument()
     expect(screen.getAllByRole('article')).toHaveLength(2)   
     expect(screen.queryByRole("img", {name: /wait a second/i})).not.toBeInTheDocument()
-    expect(screen.queryByText(/7 comments/i)).toBeInTheDocument()
-    expect(screen.queryByText(/3 comments/i)).toBeInTheDocument()
+    expect(screen.queryByText(/7 Comment\(s\)/i)).toBeInTheDocument()
+    expect(screen.queryByText(/3 Comment\(s\)/i)).toBeInTheDocument()
     expect(screen.getAllByRole("link", {name: /see more/i})).toHaveLength(2)
     expect(screen.getByRole("region", {name: /recent posts/i})).toBeInTheDocument()
     expect(screen.getByRole("link", {name: /edit/i})).toBeInTheDocument()
@@ -123,22 +123,21 @@ test("authorization error while loading posts is handled gracefully", async() =>
     history.push("/home")
     const authTokens = {refresh: 'valid-refresh', access: 'invalid-access'}
     const tokenUpdate = jest.fn()
-         render(
-        <Router history={history}>
-            <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
-            userId: 1, updateToken: tokenUpdate}}>
-                <HomePage />
-            </AuthContext.Provider>
-        </Router>
-        )
-    
+    render(
+    <Router history={history}>
+        <AuthContext.Provider value={{logout: null, initialVerificationSuccessful: false, authTokens: authTokens,
+        userId: 1, updateToken: tokenUpdate}}>
+            <HomePage />
+        </AuthContext.Provider>
+    </Router>
+    )
     expect(screen.getByRole("img", {name: /wait a second/i})).toBeInTheDocument()
+    // updateToken function will receive a 401 response as well and will log the user out + the user will be informed
     await waitFor(() => expect(tokenUpdate.mock.calls.length).toBe(1))
-    // updateToken will receive a 401 response as well and will log the user out + the user will be informed
 })
 
 test("each post of a logged-in user is rendered properly", () => {
-    // the post is rendered correctly and links redirect to valid urls
+    // the post is rendered correctly and all links redirect to valid urls
     const history = createMemoryHistory();
     render(
     <Router history={history}>
@@ -160,7 +159,7 @@ test("each post of a logged-in user is rendered properly", () => {
 })
 
 test("all posts of other users are rendered properly", () => {
-    // users who are not authors shouldn't be able to see "Edit post" link
+    // users who are not authors shouldn't be able to see the "Edit post" link
     const history = createMemoryHistory();
     render(
     <Router history={history}>

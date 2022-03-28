@@ -7,6 +7,7 @@ import { FiLoader } from "react-icons/fi"
 import './style/PostDetails.css'
 import './style/animations/Spinner.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const PostDetails = () => {
@@ -114,11 +115,12 @@ const PostDetails = () => {
       }
     }
     fetchPost(postId) 
-  }, [])
+  }, [postId, updateToken])
+
   return (
     <>
       <HomeHeader disabled={disabled}/>
-      <main className="post-details__background">
+      <main className="post-details__background" role="main">
       { !postDeleteSuccess ? 
         loading ? 
           <FiLoader role="img" aria-label="loading" className='post-details__init_loading_sign --spinner'></FiLoader> :
@@ -197,6 +199,7 @@ const PostDetails = () => {
         </>
       }
       </main>
+      <Footer/>
     </>
   )
 }

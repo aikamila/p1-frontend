@@ -10,12 +10,12 @@ exports[`login form is rendered correctly 1`] = `
   >
     <img
       alt="shangify brand logo"
-      className="auth-header__img1"
+      className="logo__img1"
       src="shangify_logo.png"
     />
     <img
       alt=""
-      className="auth-header__img2"
+      className="logo__img2"
       src="shangify_brand_name.png"
     />
     <nav
@@ -52,6 +52,7 @@ exports[`login form is rendered correctly 1`] = `
   </header>
   <main
     className="log-in-form__background"
+    role="main"
   >
     <div
       className="log-in-form__window"
@@ -115,5 +116,18 @@ exports[`login form is rendered correctly 1`] = `
       </p>
     </div>
   </main>
+  <footer
+    className="footer__background"
+    role="contentinfo"
+  >
+    <div
+      className="footer__container"
+    >
+      <span>
+        ©Copyright 
+        2022
+      </span>
+    </div>
+  </footer>
 </div>
 `;

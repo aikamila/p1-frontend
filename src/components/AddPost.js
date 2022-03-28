@@ -5,6 +5,7 @@ import AuthContext from '../context/AuthContext'
 import { FiLoader } from "react-icons/fi"
 import './style/AddEditPost.css'
 import HomeHeader from './HomeHeader'
+import Footer from './Footer'
 
 
 const AddPost = () => {
@@ -61,7 +62,7 @@ const AddPost = () => {
   return (
     <>
       <HomeHeader/>
-      <main className='post-add__background'>
+      <main className='post-add__background' role="main">
         <div className='post-add__center'>
           {success ? 
           <div className='post-add__success'>
@@ -87,6 +88,7 @@ const AddPost = () => {
           }
         </div>
       </main>
+      <Footer/>
     </>
   )
 }

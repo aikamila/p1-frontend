@@ -1,6 +1,6 @@
 .post-add__background,
 .post-edit__background {
-  min-height: 70vh;
+  min-height: 80vh;
   background-color: var(--background-gray);
   display: flex;
   flex-direction: column;
