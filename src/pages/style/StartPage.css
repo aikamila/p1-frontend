@@ -6,8 +6,6 @@
 }
 
 .start-page__beginning {
-  height: 720px;
-  min-height: 100vh;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -18,15 +16,19 @@
   .start-page__video {
     display: none;
   }
+  .start-page__beginning{
+    height: 95vh;
+  }
 }
 
 @media screen and (min-width: 821px) {
-  .start-page__video {
-  }
   .start-page__title {
-    /* color: rebeccapurple; */
     font-size: 1.1em;
     margin-right: 80px;
+  }
+  .start-page__beginning {
+    height: 720px;
+    min-height: 100vh;
   }
 }
 

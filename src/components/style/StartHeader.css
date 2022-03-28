@@ -2,8 +2,8 @@
   background-color: var(--background-gray);
   width: 100vw;
   height: 80px;
+  position: relative;
 }
-
 
 .start-header__sign_up,
 .start-header__log_in {
@@ -18,9 +18,11 @@
 
 @media screen and (max-width: 820px) {
   .start-header__navbar {
+    position: absolute;
+    bottom: 9px;
+    width: 100%;
     display: flex;
     justify-content: space-evenly;
-    align-items: flex-end;
     font-size: 1.3em;
   }
   .start-header__logo {
