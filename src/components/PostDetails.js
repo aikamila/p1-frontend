@@ -16,7 +16,7 @@ const PostDetails = () => {
   const [post, setPost] = useState(null)
   const [loading, setLoading] = useState(true)
   const [error404, setError404] = useState(null)
-  const [serverError, setServerError] = useState(null)
+  const [serverError, setServerError] = useState(true)
   const [postDeleteSuccess, setPostDeleteSuccess] = useState(null)
   const [postDeleteFailure, setPostDeleteFailure] = useState(null)
   const [disabled, setDisabled] = useState(false)

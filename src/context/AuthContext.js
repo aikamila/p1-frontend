@@ -28,7 +28,7 @@ export const AuthProvider = ({children}) => {
  
     const [authServerError, setAuthServerError] = useState(null) // server error while logging in
     const [authSignUpServerError, setAuthSignUpServerError] = useState(null) // server error while signing up
-    const [unexpectedLogoutError, setUnexpectedLogoutError] = useState(null)
+    const [unexpectedLogoutError, setUnexpectedLogoutError] = useState('Something went wrong and you were logged out.')
     const [initialVerificationError, setInitialVerificationError] = useState(null)
     const [initialVerificationServerError, setInitialVerificationServerError] = useState(null)
     const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(false)
