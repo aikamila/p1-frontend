@@ -160,9 +160,12 @@
 
 .post-details__init_err {
   margin-top: 8vh;
+  margin-left: 6px;
+  margin-right: 6px;
+  text-align: center;
   font-size: 1.1em;
-  color: gray;
   font-weight: 500;
+  color: gray;
 }
 
 .post-details__del_success {
