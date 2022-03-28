@@ -16,7 +16,7 @@
   .start-page__video {
     display: none;
   }
-  .start-page__beginning{
+  .start-page__beginning {
     height: 95vh;
   }
 }
@@ -88,4 +88,8 @@
   text-align: justify;
   text-justify: inter-word;
   line-height: 1.6;
+}
+
+.start-page__logout_err {
+  text-align: center;
 }

@@ -17,7 +17,7 @@ const StartPage = () => {
     return (
         <>
             <StartHeader />
-            {unexpectedLogoutError && <p>{unexpectedLogoutError}</p>}
+            {unexpectedLogoutError && <p className="start-page__logout_err">{unexpectedLogoutError}</p>}
             <main className='start-page'>
                 <div className='start-page__beginning'>
                     <div className='start-page__title'>
