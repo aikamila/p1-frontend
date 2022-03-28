@@ -19,7 +19,7 @@ const UpdatePost = () => {
   const [textTooLong, setTextTooLong] = useState(false)
   const [disabled, setDisabled] = useState(false)
   const [minCharsCounter, setMinCharsCounter] = useState(30)
-  const [initFailure, setInitFailure] = useState(null)
+  const [initFailure, setInitFailure] = useState("Hmmm... Unfortunately, you are not the author of this post")
   const [success, setSuccess] = useState(false)
 
   

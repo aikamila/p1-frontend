@@ -13,7 +13,7 @@ const ListPosts = () => {
   const {authTokens, updateToken} = useContext(AuthContext)
   const [posts, setPosts] = useState([])
   const [loading, setLoading] = useState(true)
-  const [fetchError, setFetchError] = useState(true)
+  const [fetchError, setFetchError] = useState(false)
   
   useEffect(() => {
     const fetchPosts = async () => {
