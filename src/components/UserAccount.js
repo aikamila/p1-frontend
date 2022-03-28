@@ -22,7 +22,7 @@ const UserAccount = () => {
   const [bio, setBio] = useState("")
   const [userInfoLoading, setUserInfoLoading] = useState(true)
   const [postsLoading, setPostsLoading] = useState(false)
-  const [userInfoLoadingFailure, setUserInfoLoadingFailure] = useState(null)
+  const [userInfoLoadingFailure, setUserInfoLoadingFailure] = useState("we weren't able to load data about this user. Try again later. Sorry.")
   const [posts, setPosts] = useState([])
   const [postsLoadingFailure, setPostsLoadingFailure] = useState(null)
   const [postsLoadingSuccess, setPostsLoadingSucccess] = useState(false)
@@ -65,7 +65,7 @@ const UserAccount = () => {
         setEmail(response.data.email)
         setBio(response.data.bio)
         setUserInfoLoading(false)
-        await fetchPosts()
+        // await fetchPosts()
       }catch(err){
         if(err.response && err.response.status === 404 && err.response.data.message === "This user does not exist."){
           setUserInfoLoadingFailure("Uppps... it seems that this user doesn't exist.")
