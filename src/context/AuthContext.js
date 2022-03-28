@@ -26,12 +26,12 @@ export const AuthProvider = ({children}) => {
 
     const [loginError, setLoginError] = useState(null) // invalid credentials
  
-    const [authServerError, setAuthServerError] = useState(null) // server error while logging in
+    const [authServerError, setAuthServerError] = useState('Upps... unexpected problem with the server occured. Try to refresh the site and log in again :)') // server error while logging in
     const [authSignUpServerError, setAuthSignUpServerError] = useState(null) // server error while signing up
     const [unexpectedLogoutError, setUnexpectedLogoutError] = useState('Something went wrong and you were logged out.')
     const [initialVerificationError, setInitialVerificationError] = useState(null)
     const [initialVerificationServerError, setInitialVerificationServerError] = useState(null)
-    const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(false)
+    const [initialVerificationSuccessful, setInitialVerificationSuccessful] = useState(true)
 
     const [loginButtonDisabled, setLoginButtonDisabled] = useState(false)
 
@@ -191,7 +191,7 @@ export const AuthProvider = ({children}) => {
         setLoginPassword('')
         setLoginError(null)
         setAuthSignUpServerError(null)
-        setAuthServerError(null)
+        // setAuthServerError(null)
     }, [location])
 
     let contextData = {
