@@ -4,4 +4,4 @@
 
 ## New is coming...
 
-### It's never enough for those who are passionate about their work. New features such as live chat, profile photos and support buttons are coming!
+### It's never enough for those who are passionate about their work. New features such as live chat, profile photos and support buttons are coming soon!
