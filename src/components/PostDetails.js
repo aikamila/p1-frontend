@@ -180,7 +180,7 @@ const PostDetails = () => {
                 </Comment>)}
               </section>
               {commentSubmitErr && <><span role="alert" className='post-details__input_err'>{commentSubmitErr}</span><br/></>}
-              { commentTooLong && <span role="alert" className='post-details__input_err'
+              {commentTooLong && <span role="alert" className='post-details__input_err'
               >Your comment can't be longer than 5000 characters.</span>}
               <div className='post-details__input_el'>
                 <textarea value={comment} onChange={(e) => countComment(e)} placeholder='Add a comment...'
