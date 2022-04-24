@@ -22,7 +22,7 @@ const StartPage = () => {
                 <div className='start-page__beginning'>
                     <div className='start-page__title'>
                         <h1>Looking for a coding buddy?</h1>
-                        <h2>You're in the right place.</h2>
+                        <h2>You're in the perfect place.</h2>
                         <button onClick={executeScroll}>See how it works</button>
                     </div>
                     <div className='start-page__video'>
@@ -54,7 +54,75 @@ const StartPage = () => {
                     <AnimationOnScroll duration={2}
                     animateIn="animate__fadeInLeft" animateOut='animate__fadeOutLeft'>
                         <section className='start-page__section --second'>
-                            <h3>Can I find my buddy even if I don't have too many skills?</h3>
+                            <h3>How does it work?</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor 
+                                turpis non felis pellentesque mattis. Vivamus pellentesque, ipsum vel 
+                                pharetra tempus, neque purus hendrerit mi, vel ornare ligula risus non nibh. 
+                                Duis fermentum, velit at venenatis pellentesque, libero massa porttitor dolor, et venenatis quam 
+                                turpis ut elit. Maecenas dignissim, risus vitae lacinia lacinia, diam purus porttitor orci, vitae posuere 
+                                diam leo eget nulla. Curabitur laoreet blandit libero, sit amet semper lorem condimentum sed. Aenean efficitur 
+                                tristique justo et suscipit. Pellentesque posuere eros eu urna elementum sodales. Pellentesque laoreet volutpat nisl, 
+                                at dictum diam malesuada ac. Pellentesque suscipit viverra mattis. Ut vitae tortor consequat, faucibus velit sed, hendrerit 
+                                tellus. Praesent id diam malesuada, viverra neque tempor, suscipit lacus. Fusce tempus convallis tellus ac vulputate. In sit 
+                                amet faucibus est. Vestibulum lacinia a arcu vitae congue.</p>
+                        </section>
+                    </AnimationOnScroll>
+                    <AnimationOnScroll duration={2}
+                    animateIn="animate__fadeInRight" animateOut='animate__fadeOutRight'>
+                        <section className='start-page__section --first'>
+                            <h3>How does it work?</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor 
+                                turpis non felis pellentesque mattis. Vivamus pellentesque, ipsum vel 
+                                pharetra tempus, neque purus hendrerit mi, vel ornare ligula risus non nibh. 
+                                Duis fermentum, velit at venenatis pellentesque, libero massa porttitor dolor, 
+                                et venenatis quam turpis ut elit. Maecenas dignissim, risus vitae lacinia lacinia, 
+                                diam purus porttitor orci, vitae posuere diam leo eget nulla. Curabitur laoreet 
+                                blandit libero, sit amet semper lorem condimentum sed. Aenean efficitur 
+                                tristique justo et suscipit. Pellentesque posuere eros eu urna elementum 
+                                sodales. Pellentesque laoreet volutpat nisl, at dictum diam malesuada ac. Pellentesque 
+                                suscipit viverra mattis. Ut vitae tortor consequat, faucibus velit sed, hendrerit tellus. 
+                                Praesent id diam malesuada, viverra neque tempor, suscipit lacus. Fusce tempus convallis 
+                                tellus ac vulputate. In sit amet faucibus est. Vestibulum lacinia a arcu vitae congue.</p>
+                        </section>
+                    </AnimationOnScroll>
+                    <AnimationOnScroll duration={2}
+                    animateIn="animate__fadeInLeft" animateOut='animate__fadeOutLeft'>
+                        <section className='start-page__section --second'>
+                            <h3>How does it work?</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor 
+                                turpis non felis pellentesque mattis. Vivamus pellentesque, ipsum vel 
+                                pharetra tempus, neque purus hendrerit mi, vel ornare ligula risus non nibh. 
+                                Duis fermentum, velit at venenatis pellentesque, libero massa porttitor dolor, et venenatis quam 
+                                turpis ut elit. Maecenas dignissim, risus vitae lacinia lacinia, diam purus porttitor orci, vitae posuere 
+                                diam leo eget nulla. Curabitur laoreet blandit libero, sit amet semper lorem condimentum sed. Aenean efficitur 
+                                tristique justo et suscipit. Pellentesque posuere eros eu urna elementum sodales. Pellentesque laoreet volutpat nisl, 
+                                at dictum diam malesuada ac. Pellentesque suscipit viverra mattis. Ut vitae tortor consequat, faucibus velit sed, hendrerit 
+                                tellus. Praesent id diam malesuada, viverra neque tempor, suscipit lacus. Fusce tempus convallis tellus ac vulputate. In sit 
+                                amet faucibus est. Vestibulum lacinia a arcu vitae congue.</p>
+                        </section>
+                    </AnimationOnScroll>
+                    <AnimationOnScroll duration={2}
+                    animateIn="animate__fadeInRight" animateOut='animate__fadeOutRight'>
+                        <section className='start-page__section --first'>
+                            <h3>How does it work?</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor 
+                                turpis non felis pellentesque mattis. Vivamus pellentesque, ipsum vel 
+                                pharetra tempus, neque purus hendrerit mi, vel ornare ligula risus non nibh. 
+                                Duis fermentum, velit at venenatis pellentesque, libero massa porttitor dolor, 
+                                et venenatis quam turpis ut elit. Maecenas dignissim, risus vitae lacinia lacinia, 
+                                diam purus porttitor orci, vitae posuere diam leo eget nulla. Curabitur laoreet 
+                                blandit libero, sit amet semper lorem condimentum sed. Aenean efficitur 
+                                tristique justo et suscipit. Pellentesque posuere eros eu urna elementum 
+                                sodales. Pellentesque laoreet volutpat nisl, at dictum diam malesuada ac. Pellentesque 
+                                suscipit viverra mattis. Ut vitae tortor consequat, faucibus velit sed, hendrerit tellus. 
+                                Praesent id diam malesuada, viverra neque tempor, suscipit lacus. Fusce tempus convallis 
+                                tellus ac vulputate. In sit amet faucibus est. Vestibulum lacinia a arcu vitae congue.</p>
+                        </section>
+                    </AnimationOnScroll>
+                    <AnimationOnScroll duration={2}
+                    animateIn="animate__fadeInLeft" animateOut='animate__fadeOutLeft'>
+                        <section className='start-page__section --second'>
+                            <h3>How does it work?</h3>
                             <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis porttitor 
                                 turpis non felis pellentesque mattis. Vivamus pellentesque, ipsum vel 
                                 pharetra tempus, neque purus hendrerit mi, vel ornare ligula risus non nibh. 
